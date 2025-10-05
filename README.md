@@ -17,7 +17,7 @@ A comprehensive Project Management Standards Repository & Comparison tool that c
 
 📚 **Standards Repository**
 - Complete coverage of 72+ topics across 4 major standards
-- Direct PDF integration with page-level navigation
+- PDF.js integration with page-level navigation via GitHub Pages
 - Structured content organization by topic and standard
 
 🎯 **Additional Features**
@@ -32,7 +32,8 @@ A comprehensive Project Management Standards Repository & Comparison tool that c
 - **Database**: SQLite for data storage
 - **Frontend**: Pure HTML, CSS, and JavaScript
 - **File Handling**: CSV parsing and generation
-- **PDF Integration**: Direct linking to online PDF resources
+- **PDF Integration:** PDF.js with GitHub Pages hosting
+- **Deep Linking:** Custom PDF viewer with page-level navigation
 - **No external frameworks**: Built with vanilla JavaScript for maximum compatibility
 
 ## Installation
