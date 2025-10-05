@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - PM Standards Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                    <div class="dropdown">
+                        <a href="comparison.html#risk" class="dropdown-item">Risk Management</a>
+                        <a href="comparison.html#stakeholder" class="dropdown-item">Stakeholder Management</a>
+                        <a href="comparison.html#quality" class="dropdown-item">Quality Management</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero">
+            <h1>Admin Panel</h1>
+            <p>Manage standards data, upload CSV files, and export repository content.</p>
+        </div>
+
+        <!-- Data Management -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Data Management</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="standards-count">-</div>
+                    <div class="stat-label">Standards Sections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="comparisons-count">-</div>
+                    <div class="stat-label">Comparisons</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="topics-count">-</div>
+                    <div class="stat-label">Unique Topics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="frameworks-count">4</div>
+                    <div class="stat-label">Frameworks</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSV Upload -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Upload CSV Files</h3>
+            </div>
+            <div class="file-upload" id="file-upload-area">
+                <div class="upload-icon">📁</div>
+                <h4>Drag and drop CSV files here</h4>
+                <p>Or click to select files</p>
+                <input type="file" id="file-upload" multiple accept=".csv" style="display: none;">
+                <button onclick="document.getElementById('file-upload').click()" class="btn btn-primary">Select Files</button>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Upload Options</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="radio" id="replace-data" name="upload-mode" value="replace" checked>
+                        <label for="replace-data">Replace existing data</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" id="merge-data" name="upload-mode" value="merge">
+                        <label for="merge-data">Merge with existing data</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button onclick="uploadFiles()" class="btn btn-primary">Upload Files</button>
+                <button onclick="previewFiles()" class="btn btn-secondary">Preview Data</button>
+            </div>
+        </div>
+
+        <!-- Data Preview -->
+        <div class="card" id="preview-card" style="display: none;">
+            <div class="card-header">
+                <h3 class="card-title">Data Preview</h3>
+            </div>
+            <div id="preview-content">
+                <!-- Preview content will be populated here -->
+            </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Export Data</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">Standards Data</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Export all standards sections as CSV</p>
+                        <button onclick="exportData('standards')" class="btn btn-primary">Export Standards</button>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">Comparison Data</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Export all comparison data as CSV</p>
+                        <button onclick="exportData('comparison')" class="btn btn-primary">Export Comparisons</button>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">Complete Dataset</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Export both standards and comparison data</p>
+                        <button onclick="exportData('all')" class="btn btn-accent">Export All</button>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">Analytics Report</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Export analytics and insights report</p>
+                        <button onclick="exportData('analytics')" class="btn btn-secondary">Export Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Validation -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Data Validation</h3>
+            </div>
+            <div class="comparison-content">
+                <p>Validate data integrity and check for inconsistencies:</p>
+                <div class="form-group">
+                    <button onclick="validateData()" class="btn btn-primary">Run Validation</button>
+                    <button onclick="checkDuplicates()" class="btn btn-secondary">Check Duplicates</button>
+                    <button onclick="validateReferences()" class="btn btn-secondary">Validate References</button>
+                </div>
+                <div id="validation-results" style="margin-top: 1rem;">
+                    <!-- Validation results will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- System Information -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">System Information</h3>
+            </div>
+            <div class="comparison-content">
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="db-size">-</div>
+                        <div class="stat-label">Database Size</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="last-updated">-</div>
+                        <div class="stat-label">Last Updated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="backup-count">-</div>
+                        <div class="stat-label">Backups Available</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="api-status">Online</div>
+                        <div class="stat-label">API Status</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Admin specific functionality
+        let selectedFiles = [];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadAdminStats();
+            setupFileUpload();
+        });
+
+        async function loadAdminStats() {
+            try {
+                const [standardsResponse, comparisonsResponse] = await Promise.all([
+                    fetch('/api/standards'),
+                    fetch('/api/comparison')
+                ]);
+
+                const standards = await standardsResponse.json();
+                const comparisons = await comparisonsResponse.json();
+
+                document.getElementById('standards-count').textContent = standards.length;
+                document.getElementById('comparisons-count').textContent = comparisons.length;
+                document.getElementById('topics-count').textContent = new Set(standards.map(s => s.topic)).size;
+                document.getElementById('last-updated').textContent = new Date().toLocaleDateString();
+            } catch (error) {
+                console.error('Error loading admin stats:', error);
+            }
+        }
+
+        function setupFileUpload() {
+            const fileUploadArea = document.getElementById('file-upload-area');
+            const fileInput = document.getElementById('file-upload');
+
+            fileUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.add('dragover');
+            });
+
+            fileUploadArea.addEventListener('dragleave', () => {
+                fileUploadArea.classList.remove('dragover');
+            });
+
+            fileUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                fileUploadArea.classList.remove('dragover');
+                selectedFiles = Array.from(e.dataTransfer.files);
+                updateFileList();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                selectedFiles = Array.from(e.target.files);
+                updateFileList();
+            });
+        }
+
+        function updateFileList() {
+            const fileUploadArea = document.getElementById('file-upload-area');
+            if (selectedFiles.length > 0) {
+                fileUploadArea.innerHTML = `
+                    <div class="upload-icon">✅</div>
+                    <h4>Files Selected (${selectedFiles.length})</h4>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        ${selectedFiles.map(file => `<li>${file.name} (${(file.size / 1024).toFixed(1)} KB)</li>`).join('')}
+                    </ul>
+                    <button onclick="clearFiles()" class="btn btn-secondary">Clear Files</button>
+                `;
+            }
+        }
+
+        function clearFiles() {
+            selectedFiles = [];
+            document.getElementById('file-upload').value = '';
+            document.getElementById('file-upload-area').innerHTML = `
+                <div class="upload-icon">📁</div>
+                <h4>Drag and drop CSV files here</h4>
+                <p>Or click to select files</p>
+                <input type="file" id="file-upload" multiple accept=".csv" style="display: none;">
+                <button onclick="document.getElementById('file-upload').click()" class="btn btn-primary">Select Files</button>
+            `;
+            setupFileUpload();
+        }
+
+        async function uploadFiles() {
+            if (selectedFiles.length === 0) {
+                alert('Please select files to upload');
+                return;
+            }
+
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                if (file.name.includes('standards')) {
+                    formData.append('standards', file);
+                } else if (file.name.includes('comparison')) {
+                    formData.append('comparison', file);
+                }
+            });
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                alert(result.message || 'Files uploaded successfully');
+                
+                // Reload stats
+                await loadAdminStats();
+                clearFiles();
+            } catch (error) {
+                console.error('Upload error:', error);
+                alert('Error uploading files');
+            }
+        }
+
+        async function previewFiles() {
+            if (selectedFiles.length === 0) {
+                alert('Please select files to preview');
+                return;
+            }
+
+            const previewCard = document.getElementById('preview-card');
+            const previewContent = document.getElementById('preview-content');
+
+            previewContent.innerHTML = '<div class="loading">Loading preview...</div>';
+            previewCard.style.display = 'block';
+
+            // Simulate file reading (in a real implementation, you'd read the CSV files)
+            setTimeout(() => {
+                previewContent.innerHTML = `
+                    <h4>File Preview</h4>
+                    <p>Files selected: ${selectedFiles.length}</p>
+                    <ul>
+                        ${selectedFiles.map(file => `<li>${file.name} - ${file.size} bytes</li>`).join('')}
+                    </ul>
+                    <p><em>Note: Full CSV preview would be implemented with a CSV parser library.</em></p>
+                `;
+            }, 1000);
+        }
+
+        async function exportData(type) {
+            try {
+                if (type === 'all') {
+                    await exportData('standards');
+                    await exportData('comparison');
+                    return;
+                }
+
+                const response = await fetch(`/api/export?type=${type}`);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${type}_export.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Error exporting data');
+            }
+        }
+
+        async function validateData() {
+            const resultsDiv = document.getElementById('validation-results');
+            resultsDiv.innerHTML = '<div class="loading">Validating data...</div>';
+
+            try {
+                const [standardsResponse, comparisonsResponse] = await Promise.all([
+                    fetch('/api/standards'),
+                    fetch('/api/comparison')
+                ]);
+
+                const standards = await standardsResponse.json();
+                const comparisons = await comparisonsResponse.json();
+
+                const issues = [];
+                
+                // Check for missing required fields
+                standards.forEach((standard, index) => {
+                    if (!standard.standard || !standard.topic || !standard.content) {
+                        issues.push(`Standards row ${index + 1}: Missing required fields`);
+                    }
+                });
+
+                comparisons.forEach((comparison, index) => {
+                    if (!comparison.topic) {
+                        issues.push(`Comparison row ${index + 1}: Missing topic`);
+                    }
+                });
+
+                // Check for duplicate IDs
+                const standardIds = standards.map(s => s.id);
+                const duplicateIds = standardIds.filter((id, index) => standardIds.indexOf(id) !== index);
+                if (duplicateIds.length > 0) {
+                    issues.push(`Duplicate IDs found: ${duplicateIds.join(', ')}`);
+                }
+
+                resultsDiv.innerHTML = `
+                    <h4>Validation Results</h4>
+                    <p><strong>Standards:</strong> ${standards.length} records</p>
+                    <p><strong>Comparisons:</strong> ${comparisons.length} records</p>
+                    <p><strong>Issues found:</strong> ${issues.length}</p>
+                    ${issues.length > 0 ? `
+                        <div style="background: #fed7d7; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+                            <h5>Issues:</h5>
+                            <ul>
+                                ${issues.map(issue => `<li>${issue}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : '<p style="color: green;">✅ No issues found</p>'}
+                `;
+            } catch (error) {
+                resultsDiv.innerHTML = `<p style="color: red;">Error validating data: ${error.message}</p>`;
+            }
+        }
+
+        function checkDuplicates() {
+            // Implementation for checking duplicates
+            alert('Duplicate check functionality would be implemented here');
+        }
+
+        function validateReferences() {
+            // Implementation for validating references
+            alert('Reference validation functionality would be implemented here');
+        }
+    </script>
+</body>
+</html>
+

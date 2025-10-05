@@ -1,0 +1,105 @@
+Similarities,Differences,Unique PMBOK 7,Unique PRINCE2,Unique ISO 21500,Unique ISO 21502, 
+"All four standards integrate several core philosophical concepts and functional management areas, emphasizing flexibility and business alignment:
+1. Focus on Value, Outcomes, and Justification: Every standard mandates that projects must maintain continuous business justification and focus on delivering measurable value or benefits, rather than merely producing deliverables.
+    ◦ The PMI Standard presents the principle to Focus on Value (3.4), defining project success by the delivery of desired outcomes and value.
+    ◦ PRINCE2 centers its method on the principle to Ensure continued business justification (2.1), requiring projects to remain desirable, viable, and achievable.
+    ◦ ISO 21502 includes Benefit management (7.3) as a core practice for identifying, analyzing, monitoring, and maintaining expected benefits, alongside the Business Case (4.3.2) as the documented justification.
+2. Governance, Roles, and Accountability: All standards require a robust management system with clear oversight, defined roles, and accountability structures.
+    ◦ The PMI Standard defines Organizational Governance Systems (2.2) to guide activities and ensure integrated structures for evaluating changes, issues, and risks.
+    ◦ PRINCE2 defines the Organizing Practice (6) to establish the structure of accountability and mandates the principle to Define roles, responsibilities, and relationships (2.3).
+    ◦ ISO 21502 explicitly defines the Project organization and roles (4.5), including the Project Sponsor (4.5.4) and Project Manager (4.5.6), and addresses the necessary Competencies of project personnel (4.6).
+3. Core Management Practices (Planning, Risk, Quality): Foundational practices necessary for execution are consistently detailed across all frameworks.
+    ◦ Planning and Scheduling are universally recognized, whether through the PMBOK Planning Performance Domain (2.4), the PRINCE2 Plans Practice (7), or the ISO 21502 Planning (7.2) and Schedule management (7.6) practices.
+    ◦ Risk and Uncertainty Management are mandatory, addressed through the PMBOK Uncertainty Performance Domain (2.8), the PRINCE2 Risk Practice (9), and the ISO 21502 Risk management practice (7.8).
+    ◦ Quality Management is vital to ensure deliverables are fit for purpose. It is captured in PMBOK's principle to Build Quality into Processes and Deliverables (3.8), PRINCE2's Quality Practice (8), and ISO 21502's Quality management (7.11) practice.
+4. Tailoring and Adaptation: All standards explicitly require the project approach to be adapted to the unique context of the project.
+    ◦ PMBOK 7 highlights Tailoring (G3) as the deliberate adaptation of the approach, governance, and processes to fit the given environment (Principle 3.7: Tailor Based on Context).
+    ◦ PRINCE2 mandates the principle to Tailor to suit the project (2.7), adapting the method based on complexity, size, and delivery method.
+    ◦ The ISO 2150x standards emphasize that ways of working should be tailored to maximize the likelihood of success.
+5. Learning and Continuous Improvement: Every standard incorporates mechanisms for extracting and applying knowledge gained during the project lifecycle.
+    ◦ PMBOK 7 includes Learning throughout the Project (2.5.8) and Growing and Improving (2.7.6).
+    ◦ PRINCE2 mandates the principle to Learn from experience (2.2), utilizing a Lessons Report (A.8) to embed learning within the organization.
+    ◦ ISO 21502 features a dedicated Lessons learned practice (7.18) for identifying and disseminating improved practices.","The standards are differentiated primarily by their fundamental structure (principles-based vs. prescriptive method vs. contextual framework) and specific areas of emphasis:
+1. Fundamental Structure and Philosophical Approach:
+    ◦ PMBOK 7 is a principles-based standard presenting 12 principles and 8 Performance Domains (e.g., Stakeholder, Uncertainty) that describe areas of focus critical for outcomes, rather than detailing rigid processes.
+    ◦ PRINCE2 is a highly structured and prescriptive method based on seven mandatory Principles, seven Practices, and seven Processes, which must all be applied to retain the method's integrity.
+    ◦ ISO 21500:2021 is unique in its purpose, serving as the overarching conceptual standard for the entire ISO P3M suite, providing the high-level context and integrated concepts governing projects, programs, and portfolios.
+    ◦ ISO 21502:2020 is a practice-based guidance standard that structures its advice around Integrated Project Management Practices (Clause 6) and specific Management Practices (Clause 7), moving away from the process-based model of its predecessor.
+2. Scope of P3M Integration:
+    ◦ ISO 21500 uniquely focuses on defining the conceptual relationships and governance framework among Projects, Programmes, and Portfolios (P3M), illustrating how they interact to achieve strategic objectives.
+3. Life Cycle Control and Staging:
+    ◦ PRINCE2 enforces rigid control through Manage by Stages (Principle 2.5), requiring formal Stage Boundaries for Project Board authorization and relying on strict monitoring against seven defined tolerance types (Benefits, Cost, Time, Quality, Scope, Sustainability, Risk).
+    ◦ ISO 21502 formally integrates Pre-project activities (verifying project worth) and Post-project activities (enabling benefit realization and demobilization) into its framework, covering the entire end-to-end scope outside of just execution.
+4. Explicit Management Practices (Procurement):
+    ◦ ISO 21502 provides a unique and dedicated, detailed management practice for Procurement (7.17) that outlines all necessary activities, including planning, supplier selection, contract administration, and contract closure.
+    ◦ In contrast, PMBOK 7 subsumes procurement into broader domains/artifacts, and PRINCE2 embeds supplier management within the Organizing practice and commercial management approach.","1. Principles over Processes:
+The unique point of the PMBOK® Guide, Seventh Edition is its fundamental shift from a prescriptive, process-based standard to a guiding, principles-based standard.
+Behavioral Guidance: The standard establishes 12 principles of project management intended to guide the behavior of project professionals and stakeholders.
+Universal Applicability: This principles-based approach enables the effective management of projects across the full value delivery landscape, including predictive, adaptive, and everything in between.
+The 12 Principles are:
+    ◦ Be a Diligent, Respectful, and Caring Steward.
+    ◦ Create a Collaborative Project Team Environment.
+    ◦ Effectively Engage with Stakeholders.
+    ◦ Focus on Value.
+    ◦ Recognize, Evaluate, and Respond to System Interactions.
+    ◦ Demonstrate Leadership Behaviors.
+    ◦ Tailor Based on Context.
+    ◦ Build Quality into Processes and Deliverables.
+    ◦ Navigate Complexity.
+    ◦ Optimize Risk Responses.
+    ◦ Embrace Adaptability and Resiliency.
+    ◦ Enable Change to Achieve the Envisioned Future State.
+","1. Integrated Components as a Unified Method: 
+PRINCE2 is defined as a project management method composed of five integrated elements: Principles, People, Practices, Processes, and the Project Context.
+Unlike standards that may focus heavily on principles (like PMBOK 7e) or provide high-level guidance (like ISO 21502), PRINCE2 offers a complete, structured method by integrating foundational Principles (guiding obligations), practical Practices (essential management aspects applied consistently), and a detailed Process model (describing the project lifecycle activities). This integrated approach ensures the method works coherently to manage and deliver a project.
+
+","The 2021 edition of ISO 21500 functions fundamentally differently from PMBOK 7 or PRINCE2 7, focusing on the broader context of P3M (Project, Programme, and Portfolio Management) rather than providing detailed project management guidance (which is now covered by ISO 21502).
+1. Overarching Standard for the ISO P3M Suite: ISO 21500 explicitly serves as the overarching document for the use of the entire family of standards prepared by ISO/TC 258. It provides the organizational context and underlying concepts for performing project, programme, and portfolio management. This structure positions it uniquely, as PMBOK 7 is focused on the Project Management Body of Knowledge, and PRINCE2 7 is a specific project management method.
+2. Integrated P3M Conceptual Framework: This standard provides a high-level conceptual view of the relationships among projects, programmes, and portfolios (P3). It illustrates how these three disciplines operate within the overall organizational environment to achieve strategic objectives and deliver value, showing the integrated flow of deliverables, outputs, and outcomes to operations (see Figure 1 in the source material).
+3. Explicit Focus on Governance, Direction, and Oversight: ISO 21500 defines governance (Clause 4.6) as necessary for authorizing, directing, empowering, overseeing, and limiting the management of projects, programmes, and portfolios. This emphasis is on the integrated governance structure required to ensure transparency and alignment of contributions to strategic objectives across all P3 disciplines","ISO 21502 structures its guidance around specific, detailed management practices, many of which are explicitly codified as mandatory practices that span the full life cycle, setting it apart from the principle-and-domain-focused approach of PMBOK 7.
+1. Dedicated Procurement Management Practice: ISO 21502 includes a clearly defined and integrated management practice for Procurement Management (Clause 7.17). This practice explicitly covers multiple sequential activities: planning procurements, evaluating and selecting suppliers, administering contracts, and closing contracts. In contrast, PMBOK 7 subsumes procurement decisions into Planning and Governance Domains, and PRINCE2 7 embeds supplier management within its Organizing Practice and management approaches.
+2. Formalization of Pre-Project and Post-Project Activities: The standard details a set of integrated project management practices (Clause 6) that comprehensively cover the entire life cycle, formally including:
+    ◦ Pre-project activities (6.2): Activities accomplished leading up to the decision to initiate the project.
+    ◦ Post-project activities (6.9): Activities necessary after the project closure to enable post-project benefit realization and manage demobilization of resources.
+3. Explicit Project Organization and Personnel Competencies: ISO 21502 dedicates sections to explicitly defining the structure and roles of the Project organization (4.5), specifying roles like Project Sponsor and Project Manager. Furthermore, it addresses the requirement for Competencies of project personnel (4.6), emphasizing that the organization should ensure project personnel possess the necessary capabilities.
+4. Practice-Based Framework Traceable to Process Groups: ISO 21502 organizes its core management guidance around specific management practices (Clauses 6 and 7). It explicitly provides a mapping showing how these practices align with the traditional Process Groups (Initiating, Planning, Implementing, Controlling, and Closing) found in the previous edition of ISO 21500 (2012). This makes it particularly useful for organizations seeking a structured, practice-based approach that can easily form the foundation for a repeatable, process-based project management framework",
+,,"2. Integration with PMIstandards+™ (Interactive Digital Platform): 
+The structure of the body of knowledge is unique due to its integration with an interactive digital content platform, PMIstandards+™.
+• Dynamic Knowledge Base: This digital component provides project practitioners and stakeholders with access to a richer and broader range of information and resources.
+• Current Practices: The platform is uniquely designed to incorporate current, emerging, and future practices, methods, artifacts, and other useful information, reflecting the dynamic nature of the project management body of knowledge faster than a static printed guide.
+• Application Guidance: The digital content provides explanations of how specific practices, methods, or artifacts apply to projects based on industry segments or project types.","2. Mandatory Principle: Manage by Stages (Structured Stop/Go Control):
+PRINCE2 enforces the principle to Manage by Stages, requiring the project to be planned, monitored, and controlled on a stage-by-stage basis, with a minimum of two mandatory stages (an initiation stage and one further stage).
+This is structurally unique for rigid control because stages are formally separated by stop/go decision points. At these points, the Project Board formally reviews the business justification before committing investment and authorizing the next stage. This mechanism ensures ongoing viability and prevents projects from wasting resources if the business case ceases to be valid.",,,
+,,"3. Emphasis on the System for Value Delivery:
+The standard introduces a systems view of project management, focusing on the comprehensive System for Value Delivery.
+• Holistic View: This perspective shifts the focus from governing isolated projects, programs, or portfolios to concentrating on the value chain that explicitly links these components with other business capabilities.
+• Strategic Alignment: The system works to advance organizational strategy, value, and business objectives through the coordinated effort of portfolios, programs, projects, products, and operations.","3. Mandatory Principle: Manage by Exception (Tolerance-Based Control):
+PRINCE2 fundamentally governs the project using the principle of Manage by Exception, which establishes strict limits of delegated authority through defining tolerances against seven performance targets.
+The formal delegation of authority and control is structured around seven tolerance types (Benefits, Cost, Time, Quality, Scope, Sustainability, and Risk). If a deviation is forecast to exceed any of these limits, the event becomes an exception requiring immediate escalation to the next management level for a decision. This allows for efficient day-to-day management at lower levels while ensuring management attention is only focused on critical deviations.",,,
+,,"4. Focus on Outcomes over Deliverables
+The standard emphasizes that project management must enable intended outcomes and subsequent value delivery, rather than merely focusing on the creation of deliverables (outputs).
+• Value Realization: While projects produce outputs (deliverables), the ultimate goal is enabling those outputs to drive outcomes that realize value for the organization and stakeholders.
+• Outcome Definition: An outcome is defined as an end result or consequence of a process or project that has a broader intent by focusing on the benefits and value the project was undertaken to deliver.","4. Focus on Products (Output-Oriented Planning and Quality):
+The core principle and associated planning method dictate a strong Focus on Products, requiring projects to be defined and managed as output-oriented rather than work-oriented.
+This principle is institutionalized through the Product-Based Planning technique. Planning starts by defining the required outputs (""products"") via a Project Product Description and Product Descriptions, establishing precise quality specifications and acceptance criteria before determining the necessary activities or tasks. This process helps prevent uncontrolled change (""scope creep"") and ensures all work directly contributes to achieving stakeholder expectations.",,,
+,,"5. Categorization via Eight Project Performance Domains
+The guidance organizes project work around eight Project Performance Domains, replacing the older structure based on Knowledge Areas.
+• Outcome-Focused Measurement: These domains are crucial for the effective delivery of project outcomes and are unique because performance is evaluated through outcomes-focused measures, rather than measuring adherence to specific processes or the production of required artifacts.
+• Integrated System: The domains function as an integrated system of interactive, interrelated, and interdependent management capabilities that run concurrently throughout the project.
+• The Eight Project Performance Domains are:
+    ◦ Stakeholders.
+    ◦ Team.
+    ◦ Development Approach and Life Cycle.
+    ◦ Planning.
+    ◦ Project Work.
+    ◦ Delivery.
+    ◦ Measurement.
+    ◦ Uncertainty.","5. Structured Project Governance with Three Interests:
+PRINCE2 defines a specific, required organizational structure where three essential stakeholder interests (Business, User, and Supplier) must be represented in the Project Board.
+The method formally mandates three distinct roles on the Project Board—the Project Executive (Business justification/accountability), the Senior User (Benefits specification/realization), and the Senior Supplier (Expertise/resources to deliver the product). This design ensures that commercial, operational, and delivery viewpoints are consistently represented, balanced, and maintained for effective decision-making.",,,
+,,"6. Expanded Models, Methods, and Artifacts Section:
+The inclusion of a detailed and expanded section on Models, Methods, and Artifacts (Section 4) provides flexible application options.
+• Non-Prescriptive Resources: This section maintains links to the tools and techniques found in previous editions and external practices, providing a high-level grouping of resources without prescribing when, how, or which ones teams should use.
+• Enabling Adaptability: By separating the principles and performance domains from specific prescriptive tools, the guide enables project teams to choose techniques appropriate to their chosen delivery approach and context.","6. Integration of ""People"" and Organizational Change:
+PRINCE2 explicitly includes People as one of its five integrated elements, focusing on the human aspects of project management, team dynamics, and leading organizational change.
+This dedication means the method addresses how the complexity of relationships, culture, leadership, and communication affect delivery. PRINCE2 requires the creation of a Change Management Approach and explicitly integrates people factors (such as behaviors and relationships) into its organizational structures and processes.",,,

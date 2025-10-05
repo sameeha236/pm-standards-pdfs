@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+<body>
+    <div>
+        Page: <span id="page-num">1</span>
+        <button onclick="prevPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
+    </div>
+    <canvas id="pdf-canvas"></canvas>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdfUrl = urlParams.get('file');
+        let currentPage = parseInt(urlParams.get('page')) || 1;
+        let pdfDoc = null;
+
+        // Load the PDF from the URL
+        pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+            pdfDoc = pdf;
+            showPage(currentPage);
+        });
+
+        function showPage(pageNum) {
+            pdfDoc.getPage(pageNum).then(page => {
+                const canvas = document.getElementById('pdf-canvas');
+                const ctx = canvas.getContext('2d');
+                const viewport = page.getViewport({ scale: 1.5 });
+                
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                page.render({
+                    canvasContext: ctx,
+                    viewport: viewport
+                });
+                
+                document.getElementById('page-num').textContent = pageNum;
+                currentPage = pageNum;
+            });
+        }
+
+        function prevPage() { if(currentPage > 1) showPage(currentPage - 1); }
+        function nextPage() { if(currentPage < pdfDoc.numPages) showPage(currentPage + 1); }
+    </script>
+</body>
+</html>

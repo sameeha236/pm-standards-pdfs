@@ -1,0 +1,11 @@
+id,standard,topic,subtopic,section_reference,deep_link,content
+1,PMBOK 7,Risk Management,Planning,4.1.1,#pmbok-risk-planning,Risk management planning defines how to conduct risk management activities for a project.
+2,PRINCE2,Risk Management,Approach,2.3,#prince2-risk-approach,PRINCE2 describes a risk management approach for controlling uncertainty.
+3,ISO 21500,Risk Management,Identification,5.2.1,#iso21500-risk-id,ISO 21500 recommends structured risk identification.
+4,ISO 21502,Risk Management,Contextual Risk,6.1.2,#iso21502-context-risk,ISO 21502 emphasizes contextual risk analysis in project environments.
+5,PMBOK 7,Stakeholder Management,Engagement,13.1.1,#pmbok-stakeholder-engagement,Stakeholder engagement involves identifying and managing relationships with project stakeholders.
+6,PRINCE2,Stakeholder Management,Communication,3.2.1,#prince2-stakeholder-comm,PRINCE2 emphasizes stakeholder communication as a key management product.
+7,ISO 21500,Stakeholder Management,Analysis,4.3.1,#iso21500-stakeholder-analysis,ISO 21500 provides guidelines for stakeholder analysis and management.
+8,PMBOK 7,Quality Management,Planning,8.1.1,#pmbok-quality-planning,Quality management planning ensures project deliverables meet requirements.
+9,PRINCE2,Quality Management,Assurance,4.1.1,#prince2-quality-assurance,PRINCE2 quality assurance focuses on independent quality reviews.
+10,ISO 21500,Quality Management,Control,7.2.1,#iso21500-quality-control,ISO 21500 quality control involves monitoring and measuring quality performance.

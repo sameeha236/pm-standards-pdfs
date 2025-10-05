@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer - PM Standards Hub</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .pdf-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: #f7fafc;
+        }
+        
+        .pdf-header {
+            background: linear-gradient(135deg, #1a365d, #2d7a7a);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .pdf-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .pdf-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .page-info {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .control-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .pdf-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .pdf-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .pdf-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .pdf-btn:disabled:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.3);
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .zoom-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .zoom-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .zoom-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: #d4af37;
+            transform: scale(1.1);
+        }
+        
+        .pdf-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+            overflow: auto;
+        }
+        
+        .pdf-canvas-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 1rem;
+            max-width: 100%;
+        }
+        
+        #pdf-canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: #2d7a7a;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #2d7a7a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            color: #e53e3e;
+            text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(26, 54, 93, 0.9);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            z-index: 1000;
+        }
+        
+        .back-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .pdf-header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .pdf-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .control-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .pdf-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        <button class="back-btn" onclick="goBack()">← Back to Standards</button>
+        
+        <div class="pdf-header">
+            <div class="pdf-title" id="pdf-title">Loading PDF...</div>
+            <div class="pdf-controls">
+                <div class="page-info">
+                    Page <span id="page-num">1</span> of <span id="total-pages">-</span>
+                </div>
+                <div class="control-buttons">
+                    <button class="pdf-btn" onclick="prevPage()" id="prev-btn">
+                        ← Previous
+                    </button>
+                    <button class="pdf-btn" onclick="nextPage()" id="next-btn">
+                        Next →
+                    </button>
+                    <button class="pdf-btn" onclick="goToFirstPage()">
+                        ⏮ First
+                    </button>
+                    <button class="pdf-btn" onclick="goToLastPage()">
+                        ⏭ Last
+                    </button>
+                </div>
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomOut()">-</button>
+                    <span id="zoom-level">100%</span>
+                    <button class="zoom-btn" onclick="zoomIn()">+</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pdf-content">
+            <div class="pdf-canvas-container">
+                <div id="loading" class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading PDF...</p>
+                </div>
+                <canvas id="pdf-canvas" style="display: none;"></canvas>
+                <div id="error" class="error" style="display: none;">
+                    <div class="error-icon">⚠️</div>
+                    <h3>Error Loading PDF</h3>
+                    <p>Unable to load the PDF file. Please check the link and try again.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdfUrl = urlParams.get('file');
+        const startPage = parseInt(urlParams.get('page')) || 1;
+        const bookTitle = urlParams.get('title') || 'PDF Document';
+        
+        let currentPage = startPage;
+        let pdfDoc = null;
+        let scale = 1.5;
+        
+        // Set the title
+        document.getElementById('pdf-title').textContent = bookTitle;
+        
+        // Load the PDF
+        if (pdfUrl) {
+            loadPDF(pdfUrl);
+        } else {
+            showError();
+        }
+        
+        function loadPDF(url) {
+            const loading = document.getElementById('loading');
+            const canvas = document.getElementById('pdf-canvas');
+            const error = document.getElementById('error');
+            
+            loading.style.display = 'flex';
+            canvas.style.display = 'none';
+            error.style.display = 'none';
+            
+            pdfjsLib.getDocument(url).promise
+                .then(pdf => {
+                    pdfDoc = pdf;
+                    document.getElementById('total-pages').textContent = pdf.numPages;
+                    showPage(currentPage);
+                    loading.style.display = 'none';
+                    canvas.style.display = 'block';
+                })
+                .catch(err => {
+                    console.error('Error loading PDF:', err);
+                    loading.style.display = 'none';
+                    error.style.display = 'flex';
+                });
+        }
+        
+        function showPage(pageNum) {
+            if (!pdfDoc) return;
+            
+            pdfDoc.getPage(pageNum).then(page => {
+                const canvas = document.getElementById('pdf-canvas');
+                const ctx = canvas.getContext('2d');
+                const viewport = page.getViewport({ scale: scale });
+                
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                page.render({
+                    canvasContext: ctx,
+                    viewport: viewport
+                });
+                
+                document.getElementById('page-num').textContent = pageNum;
+                currentPage = pageNum;
+                
+                // Update button states
+                document.getElementById('prev-btn').disabled = pageNum <= 1;
+                document.getElementById('next-btn').disabled = pageNum >= pdfDoc.numPages;
+            });
+        }
+        
+        function prevPage() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        }
+        
+        function nextPage() {
+            if (currentPage < pdfDoc.numPages) {
+                showPage(currentPage + 1);
+            }
+        }
+        
+        function goToFirstPage() {
+            showPage(1);
+        }
+        
+        function goToLastPage() {
+            showPage(pdfDoc.numPages);
+        }
+        
+        function zoomIn() {
+            scale = Math.min(scale + 0.25, 3);
+            updateZoom();
+            showPage(currentPage);
+        }
+        
+        function zoomOut() {
+            scale = Math.max(scale - 0.25, 0.5);
+            updateZoom();
+            showPage(currentPage);
+        }
+        
+        function updateZoom() {
+            document.getElementById('zoom-level').textContent = Math.round(scale * 100) + '%';
+        }
+        
+        function showError() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'flex';
+        }
+        
+        function goBack() {
+            window.close();
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevPage();
+                    break;
+                case 'ArrowRight':
+                    nextPage();
+                    break;
+                case 'Home':
+                    goToFirstPage();
+                    break;
+                case 'End':
+                    goToLastPage();
+                    break;
+                case '+':
+                case '=':
+                    zoomIn();
+                    break;
+                case '-':
+                    zoomOut();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
+

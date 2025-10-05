@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Standards Books - PM Standards Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .book-cover {
+            height: 200px;
+            background: linear-gradient(135deg, #1a365d, #2d7a7a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .book-icon {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .book-content {
+            padding: 1.5rem;
+        }
+        
+        .book-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .book-author {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .book-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .book-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .book-btn {
+            background: #2d7a7a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .book-btn:hover {
+            background: #1a365d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .book-btn.secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .book-btn.secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .book-btn.accent {
+            background: #d4af37;
+            color: white;
+        }
+        
+        .book-btn.accent:hover {
+            background: #b8941f;
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+        
+        .book-pages {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .book-year {
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .search-books {
+            margin-bottom: 2rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: white;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #2d7a7a;
+            box-shadow: 0 0 0 3px rgba(45, 122, 122, 0.1);
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            background: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .filter-tab.active {
+            background: #2d7a7a;
+            color: white;
+        }
+        
+        .filter-tab:hover {
+            background: #cbd5e0;
+        }
+        
+        .filter-tab.active:hover {
+            background: #1a365d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                        <a href="books.html" class="dropdown-item">📚 Books & PDFs</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero">
+            <h1>📚 PM Standards Books & PDFs</h1>
+            <p>Access official project management standards, guides, and reference materials in PDF format.</p>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="search-books">
+            <input type="text" id="book-search" class="search-input" placeholder="Search books and documents...">
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Books</button>
+            <button class="filter-tab" data-filter="pmbok">PMBOK</button>
+            <button class="filter-tab" data-filter="prince2">PRINCE2</button>
+            <button class="filter-tab" data-filter="iso">ISO Standards</button>
+            <button class="filter-tab" data-filter="guides">Guides</button>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="books-grid" id="books-grid">
+            <!-- Books will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Book library data
+        const books = [
+            {
+                id: 1,
+                title: "PMBOK Guide 7th Edition",
+                author: "Project Management Institute",
+                year: "2021",
+                pages: "250",
+                description: "The PMBOK Guide 7th Edition provides the fundamental practices needed to achieve organizational results and consistency in the practice of project management.",
+                category: "pmbok",
+                pdfUrl: "https://sameeha236.github.io/pm-standards-pdfs/PMBOK.pdf",
+                icon: "📖",
+                color: "#1a365d"
+            },
+            {
+                id: 2,
+                title: "PRINCE2 7th Edition",
+                author: "AXELOS",
+                year: "2023",
+                pages: "300",
+                description: "PRINCE2 7th Edition provides a structured approach to project management with defined roles, responsibilities, and processes.",
+                category: "prince2",
+                pdfUrl: "https://sameeha236.github.io/pm-standards-pdfs/PRINCE2.pdf",
+                icon: "📋",
+                color: "#2d7a7a"
+            },
+            {
+                id: 3,
+                title: "ISO 21500:2021",
+                author: "International Organization for Standardization",
+                year: "2021",
+                pages: "200",
+                description: "ISO 21500 provides guidance on project management concepts and processes that can be used by any type of organization.",
+                category: "iso",
+                pdfUrl: "https://sameeha236.github.io/pm-standards-pdfs/ISO21500.pdf",
+                icon: "📊",
+                color: "#4a5568"
+            },
+            {
+                id: 4,
+                title: "ISO 21502:2020",
+                author: "International Organization for Standardization",
+                year: "2020",
+                pages: "180",
+                description: "ISO 21502 provides guidance on project, programme and portfolio management concepts and processes.",
+                category: "iso",
+                pdfUrl: "https://sameeha236.github.io/pm-standards-pdfs/ISO21502.pdf",
+                icon: "📈",
+                color: "#718096"
+            },
+            {
+                id: 5,
+                title: "Agile Practice Guide",
+                author: "Project Management Institute",
+                year: "2017",
+                pages: "150",
+                description: "The Agile Practice Guide provides tools, situational guidelines, and an understanding of the various agile approaches available.",
+                category: "guides",
+                pdfUrl: "https://sameeha236.github.io/pm-standards-pdfs/AgileGuide.pdf",
+                icon: "🚀",
+                color: "#d4af37"
+            },
+            {
+                id: 6,
+                title: "Risk Management Guide",
+                author: "Project Management Institute",
+                year: "2019",
+                pages: "120",
+                description: "Comprehensive guide to risk management practices in project management, including identification, assessment, and response strategies.",
+                category: "guides",
+                pdfUrl: "https://sameeha236.github.io/pm-standards-pdfs/RiskGuide.pdf",
+                icon: "⚠️",
+                color: "#e53e3e"
+            }
+        ];
+
+        let filteredBooks = [...books];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBooks();
+            setupSearch();
+            setupFilters();
+        });
+
+        function renderBooks() {
+            const grid = document.getElementById('books-grid');
+            grid.innerHTML = filteredBooks.map(book => `
+                <div class="book-card">
+                    <div class="book-cover" style="background: linear-gradient(135deg, ${book.color}, ${book.color}dd);">
+                        <div class="book-icon">${book.icon}</div>
+                    </div>
+                    <div class="book-content">
+                        <div class="book-meta">
+                            <div class="book-pages">
+                                <span>📄</span>
+                                <span>${book.pages} pages</span>
+                            </div>
+                            <div class="book-year">${book.year}</div>
+                        </div>
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">by ${book.author}</p>
+                        <p class="book-description">${book.description}</p>
+                        <div class="book-actions">
+                            <a href="pdf-viewer.html?file=${encodeURIComponent(book.pdfUrl)}&title=${encodeURIComponent(book.title)}" 
+                               class="book-btn" target="_blank">
+                                📖 Open PDF
+                            </a>
+                            <button class="book-btn secondary" onclick="bookmarkBook(${book.id})">
+                                🔖 Bookmark
+                            </button>
+                            <button class="book-btn accent" onclick="shareBook('${book.title}', '${book.pdfUrl}')">
+                                📤 Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('book-search');
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                filteredBooks = books.filter(book => 
+                    book.title.toLowerCase().includes(query) ||
+                    book.author.toLowerCase().includes(query) ||
+                    book.description.toLowerCase().includes(query)
+                );
+                renderBooks();
+            });
+        }
+
+        function setupFilters() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Update active tab
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Filter books
+                    const filter = tab.dataset.filter;
+                    if (filter === 'all') {
+                        filteredBooks = [...books];
+                    } else {
+                        filteredBooks = books.filter(book => book.category === filter);
+                    }
+                    renderBooks();
+                });
+            });
+        }
+
+        function bookmarkBook(bookId) {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const book = books.find(b => b.id === bookId);
+            
+            if (!bookmarks.find(b => b.id === bookId)) {
+                bookmarks.push(book);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                alert('Book bookmarked successfully!');
+            } else {
+                alert('Book already bookmarked!');
+            }
+        }
+
+        function shareBook(title, url) {
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: `Check out this PM standard: ${title}`,
+                    url: url
+                });
+            } else {
+                // Fallback to copying to clipboard
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+

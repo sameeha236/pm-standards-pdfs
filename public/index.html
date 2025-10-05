@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Standards Comparison Tool</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                        <a href="books.html" class="dropdown-item">📚 Books & PDFs</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                    <div class="dropdown">
+                        <a href="comparison.html#risk" class="dropdown-item">Risk Management</a>
+                        <a href="comparison.html#stakeholder" class="dropdown-item">Stakeholder Management</a>
+                        <a href="comparison.html#quality" class="dropdown-item">Quality Management</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Project Management Standards Hub</h1>
+        <p>Compare and analyze PMBOK 7, PRINCE2, ISO 21500, and ISO 21502 standards in one comprehensive platform. Find the right approach for your project needs.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Quick Access Cards -->
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Standards Repository</h3>
+                </div>
+                <p>Browse and search through comprehensive project management standards including PMBOK 7, PRINCE2, ISO 21500, and ISO 21502.</p>
+                <a href="repository.html" class="btn btn-primary">Explore Standards</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Side-by-Side Comparison</h3>
+                </div>
+                <p>Compare standards across different frameworks for specific topics like Risk Management, Stakeholder Engagement, and Quality Control.</p>
+                <a href="comparison.html" class="btn btn-primary">Start Comparing</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Scenario Recommender</h3>
+                </div>
+                <p>Get tailored recommendations based on your project characteristics including size, complexity, and risk level.</p>
+                <a href="scenarios.html" class="btn btn-primary">Get Recommendations</a>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Insights Dashboard</h3>
+                </div>
+                <p>View analytics and insights about overlaps, differences, and unique aspects across different standards.</p>
+                <a href="dashboard.html" class="btn btn-primary">View Insights</a>
+            </div>
+        </div>
+
+        <!-- Featured Standards -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Featured Standards</h3>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">PMBOK 7</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Project Management Body of Knowledge</strong></p>
+                        <p>Comprehensive guide to project management practices, principles, and processes.</p>
+                        <a href="repository.html#pmbok" class="btn btn-link">Explore PMBOK 7</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">PRINCE2</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Projects in Controlled Environments</strong></p>
+                        <p>Structured project management method with defined roles and responsibilities.</p>
+                        <a href="repository.html#prince2" class="btn btn-link">Explore PRINCE2</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">ISO 21500</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Guidance on Project Management</strong></p>
+                        <p>International standard providing guidance on project management concepts and processes.</p>
+                        <a href="repository.html#iso21500" class="btn btn-link">Explore ISO 21500</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">ISO 21502</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Project, Programme and Portfolio Management</strong></p>
+                        <p>Comprehensive standard covering project, programme, and portfolio management.</p>
+                        <a href="repository.html#iso21502" class="btn btn-link">Explore ISO 21502</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Platform Statistics</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-standards">-</div>
+                    <div class="stat-label">Standards Sections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-topics">-</div>
+                    <div class="stat-label">Topics Covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-comparisons">-</div>
+                    <div class="stat-label">Comparisons Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Standards Frameworks</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Load stats on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const [standardsResponse, comparisonsResponse] = await Promise.all([
+                    fetch('/api/standards'),
+                    fetch('/api/comparison')
+                ]);
+
+                const standards = await standardsResponse.json();
+                const comparisons = await comparisonsResponse.json();
+
+                document.getElementById('total-standards').textContent = standards.length;
+                document.getElementById('total-topics').textContent = new Set(standards.map(s => s.topic)).size;
+                document.getElementById('total-comparisons').textContent = comparisons.length;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        });
+    </script>
+</body>
+</html>
+

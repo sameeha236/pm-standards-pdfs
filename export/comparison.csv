@@ -1,0 +1,4 @@
+id,topic,pmbok,prince2,iso21500,iso21502,similarities,differences,unique_points,reference_ids
+1,Risk Management,Risk Planning,Risk Approach,Risk Identification,Contextual Risk,All emphasize identifying risks,Different terminologies,ISO 21502 uniquely emphasizes context,"#1,#2,#3,#4"
+2,Stakeholder Management,Stakeholder Engagement,Communication,Analysis,Relationship Management,All focus on stakeholder identification,Varying approaches to engagement,PMBOK emphasizes engagement strategies,"#5,#6,#7"
+3,Quality Management,Quality Planning,Assurance,Control,Continuous Improvement,All include quality processes,Different quality frameworks,ISO 21502 adds continuous improvement,"#8,#9,#10"

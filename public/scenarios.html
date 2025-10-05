@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenario Recommender - PM Standards Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                    <div class="dropdown">
+                        <a href="comparison.html#risk" class="dropdown-item">Risk Management</a>
+                        <a href="comparison.html#stakeholder" class="dropdown-item">Stakeholder Management</a>
+                        <a href="comparison.html#quality" class="dropdown-item">Quality Management</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero">
+            <h1>Scenario Recommender</h1>
+            <p>Get tailored project management recommendations based on your project characteristics and requirements.</p>
+        </div>
+
+        <!-- Scenario Form -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Project Characteristics</h3>
+            </div>
+            <form id="scenario-form">
+                <div class="dashboard-grid">
+                    <div class="form-group">
+                        <label for="project-size" class="form-label">Project Size</label>
+                        <select id="project-size" class="form-select" required>
+                            <option value="">Select project size</option>
+                            <option value="small">Small (1-10 team members, < 6 months)</option>
+                            <option value="medium">Medium (10-50 team members, 6-18 months)</option>
+                            <option value="large">Large (50-200 team members, 18+ months)</option>
+                            <option value="enterprise">Enterprise (200+ team members, multi-year)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project-complexity" class="form-label">Project Complexity</label>
+                        <select id="project-complexity" class="form-select" required>
+                            <option value="">Select complexity level</option>
+                            <option value="low">Low (Simple, well-defined scope)</option>
+                            <option value="medium">Medium (Moderate complexity, some unknowns)</option>
+                            <option value="high">High (Complex, many interdependencies)</option>
+                            <option value="very-high">Very High (Highly complex, many unknowns)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="risk-level" class="form-label">Risk Level</label>
+                        <select id="risk-level" class="form-select" required>
+                            <option value="">Select risk level</option>
+                            <option value="low">Low (Minimal risk, proven technology)</option>
+                            <option value="medium">Medium (Some risk, mixed technologies)</option>
+                            <option value="high">High (Significant risk, new technologies)</option>
+                            <option value="very-high">Very High (Extreme risk, cutting-edge)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stakeholder-count" class="form-label">Stakeholder Count</label>
+                        <select id="stakeholder-count" class="form-select" required>
+                            <option value="">Select stakeholder count</option>
+                            <option value="few">Few (1-5 stakeholders)</option>
+                            <option value="moderate">Moderate (5-20 stakeholders)</option>
+                            <option value="many">Many (20-50 stakeholders)</option>
+                            <option value="extensive">Extensive (50+ stakeholders)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="industry" class="form-label">Industry/Context</label>
+                    <select id="industry" class="form-select">
+                        <option value="">Select industry (optional)</option>
+                        <option value="technology">Technology/Software</option>
+                        <option value="construction">Construction/Infrastructure</option>
+                        <option value="healthcare">Healthcare/Medical</option>
+                        <option value="finance">Finance/Banking</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="government">Government/Public Sector</option>
+                        <option value="nonprofit">Non-profit</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Key Focus Areas (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="focus-risk" name="focus-areas" value="risk">
+                            <label for="focus-risk">Risk Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="focus-quality" name="focus-areas" value="quality">
+                            <label for="focus-quality">Quality Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="focus-stakeholder" name="focus-areas" value="stakeholder">
+                            <label for="focus-stakeholder">Stakeholder Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="focus-communication" name="focus-areas" value="communication">
+                            <label for="focus-communication">Communication Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="focus-change" name="focus-areas" value="change">
+                            <label for="focus-change">Change Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="focus-resource" name="focus-areas" value="resource">
+                            <label for="focus-resource">Resource Management</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Generate Recommendations</button>
+                    <button type="button" onclick="clearForm()" class="btn btn-secondary">Clear Form</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Recommendations Results -->
+        <div class="card" id="recommendations-card" style="display: none;">
+            <div class="card-header">
+                <h3 class="card-title">Recommended Approach</h3>
+            </div>
+            <div id="recommendations-content">
+                <!-- Recommendations will be populated here -->
+            </div>
+        </div>
+
+        <!-- Example Scenarios -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Example Scenarios</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="comparison-card" onclick="loadExampleScenario('startup')">
+                    <div class="standard-header">
+                        <div class="standard-name">Startup Software Project</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Small, Low Risk, Agile</strong></p>
+                        <p>Fast-paced development with minimal bureaucracy</p>
+                        <a href="#" class="btn btn-link">Load Example</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="loadExampleScenario('enterprise')">
+                    <div class="standard-header">
+                        <div class="standard-name">Enterprise Transformation</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Large, High Risk, Structured</strong></p>
+                        <p>Complex organizational change with multiple stakeholders</p>
+                        <a href="#" class="btn btn-link">Load Example</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="loadExampleScenario('construction')">
+                    <div class="standard-header">
+                        <div class="standard-name">Infrastructure Project</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Medium, Medium Risk, Traditional</strong></p>
+                        <p>Construction or infrastructure development</p>
+                        <a href="#" class="btn btn-link">Load Example</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="loadExampleScenario('research')">
+                    <div class="standard-header">
+                        <div class="standard-name">Research & Development</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p><strong>Medium, Very High Risk, Innovative</strong></p>
+                        <p>R&D project with high uncertainty</p>
+                        <a href="#" class="btn btn-link">Load Example</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Scenario specific functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            setupScenarioForm();
+        });
+
+        function setupScenarioForm() {
+            const form = document.getElementById('scenario-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                generateRecommendations();
+            });
+        }
+
+        function generateRecommendations() {
+            const formData = {
+                projectSize: document.getElementById('project-size').value,
+                complexity: document.getElementById('project-complexity').value,
+                riskLevel: document.getElementById('risk-level').value,
+                stakeholderCount: document.getElementById('stakeholder-count').value,
+                industry: document.getElementById('industry').value,
+                focusAreas: Array.from(document.querySelectorAll('input[name="focus-areas"]:checked')).map(cb => cb.value)
+            };
+
+            const recommendations = analyzeScenario(formData);
+            displayRecommendations(recommendations);
+        }
+
+        function analyzeScenario(scenario) {
+            const recommendations = {
+                primaryFramework: '',
+                secondaryFrameworks: [],
+                keyProcesses: [],
+                riskApproach: '',
+                stakeholderApproach: '',
+                qualityApproach: '',
+                rationale: ''
+            };
+
+            // Determine primary framework based on scenario
+            if (scenario.projectSize === 'small' && scenario.complexity === 'low') {
+                recommendations.primaryFramework = 'PMBOK 7';
+                recommendations.rationale = 'Small, simple projects benefit from PMBOK\'s flexible approach';
+            } else if (scenario.projectSize === 'large' && scenario.riskLevel === 'high') {
+                recommendations.primaryFramework = 'PRINCE2';
+                recommendations.rationale = 'Large, high-risk projects require PRINCE2\'s structured governance';
+            } else if (scenario.industry === 'government' || scenario.stakeholderCount === 'extensive') {
+                recommendations.primaryFramework = 'ISO 21500';
+                recommendations.rationale = 'Government and extensive stakeholder projects align with ISO standards';
+            } else if (scenario.projectSize === 'enterprise' || scenario.complexity === 'very-high') {
+                recommendations.primaryFramework = 'ISO 21502';
+                recommendations.rationale = 'Enterprise and highly complex projects benefit from ISO 21502\'s comprehensive approach';
+            } else {
+                recommendations.primaryFramework = 'PMBOK 7';
+                recommendations.rationale = 'PMBOK 7 provides a balanced approach for most project types';
+            }
+
+            // Determine secondary frameworks
+            if (scenario.riskLevel === 'high' || scenario.focusAreas.includes('risk')) {
+                recommendations.secondaryFrameworks.push('PRINCE2 (Risk Management)');
+            }
+            if (scenario.stakeholderCount === 'many' || scenario.focusAreas.includes('stakeholder')) {
+                recommendations.secondaryFrameworks.push('ISO 21500 (Stakeholder Management)');
+            }
+            if (scenario.focusAreas.includes('quality')) {
+                recommendations.secondaryFrameworks.push('ISO 21502 (Quality Management)');
+            }
+
+            // Key processes based on focus areas
+            if (scenario.focusAreas.includes('risk')) {
+                recommendations.keyProcesses.push('Risk Management Planning');
+                recommendations.keyProcesses.push('Risk Identification and Assessment');
+                recommendations.keyProcesses.push('Risk Response Planning');
+            }
+            if (scenario.focusAreas.includes('stakeholder')) {
+                recommendations.keyProcesses.push('Stakeholder Identification');
+                recommendations.keyProcesses.push('Stakeholder Engagement Planning');
+                recommendations.keyProcesses.push('Stakeholder Communication');
+            }
+            if (scenario.focusAreas.includes('quality')) {
+                recommendations.keyProcesses.push('Quality Planning');
+                recommendations.keyProcesses.push('Quality Assurance');
+                recommendations.keyProcesses.push('Quality Control');
+            }
+
+            // Risk approach
+            if (scenario.riskLevel === 'low') {
+                recommendations.riskApproach = 'Basic risk identification and monitoring';
+            } else if (scenario.riskLevel === 'medium') {
+                recommendations.riskApproach = 'Structured risk management with regular reviews';
+            } else {
+                recommendations.riskApproach = 'Comprehensive risk management with dedicated risk team';
+            }
+
+            // Stakeholder approach
+            if (scenario.stakeholderCount === 'few') {
+                recommendations.stakeholderApproach = 'Direct communication and engagement';
+            } else if (scenario.stakeholderCount === 'moderate') {
+                recommendations.stakeholderApproach = 'Structured stakeholder management with communication plan';
+            } else {
+                recommendations.stakeholderApproach = 'Comprehensive stakeholder analysis and engagement strategy';
+            }
+
+            // Quality approach
+            if (scenario.industry === 'technology') {
+                recommendations.qualityApproach = 'Agile quality practices with continuous testing';
+            } else if (scenario.industry === 'construction') {
+                recommendations.qualityApproach = 'Traditional quality control with inspections';
+            } else {
+                recommendations.qualityApproach = 'Balanced quality management approach';
+            }
+
+            return recommendations;
+        }
+
+        function displayRecommendations(recommendations) {
+            const card = document.getElementById('recommendations-card');
+            const content = document.getElementById('recommendations-content');
+
+            content.innerHTML = `
+                <div class="recommendation-section">
+                    <h4>Primary Framework: ${recommendations.primaryFramework}</h4>
+                    <p>${recommendations.rationale}</p>
+                </div>
+
+                ${recommendations.secondaryFrameworks.length > 0 ? `
+                <div class="recommendation-section">
+                    <h4>Secondary Frameworks</h4>
+                    <ul>
+                        ${recommendations.secondaryFrameworks.map(framework => `<li>${framework}</li>`).join('')}
+                    </ul>
+                </div>
+                ` : ''}
+
+                <div class="recommendation-section">
+                    <h4>Key Processes to Implement</h4>
+                    <ul>
+                        ${recommendations.keyProcesses.map(process => `<li>${process}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="recommendation-section">
+                    <h4>Risk Management Approach</h4>
+                    <p>${recommendations.riskApproach}</p>
+                </div>
+
+                <div class="recommendation-section">
+                    <h4>Stakeholder Management Approach</h4>
+                    <p>${recommendations.stakeholderApproach}</p>
+                </div>
+
+                <div class="recommendation-section">
+                    <h4>Quality Management Approach</h4>
+                    <p>${recommendations.qualityApproach}</p>
+                </div>
+
+                <div class="recommendation-actions">
+                    <a href="comparison.html" class="btn btn-primary">Compare Standards</a>
+                    <a href="repository.html" class="btn btn-secondary">View Standards</a>
+                </div>
+            `;
+
+            card.style.display = 'block';
+            card.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearForm() {
+            document.getElementById('scenario-form').reset();
+            document.getElementById('recommendations-card').style.display = 'none';
+        }
+
+        function loadExampleScenario(type) {
+            const examples = {
+                startup: {
+                    projectSize: 'small',
+                    complexity: 'low',
+                    riskLevel: 'medium',
+                    stakeholderCount: 'few',
+                    industry: 'technology',
+                    focusAreas: ['communication', 'change']
+                },
+                enterprise: {
+                    projectSize: 'enterprise',
+                    complexity: 'very-high',
+                    riskLevel: 'high',
+                    stakeholderCount: 'extensive',
+                    industry: 'other',
+                    focusAreas: ['risk', 'stakeholder', 'quality', 'change']
+                },
+                construction: {
+                    projectSize: 'medium',
+                    complexity: 'medium',
+                    riskLevel: 'medium',
+                    stakeholderCount: 'moderate',
+                    industry: 'construction',
+                    focusAreas: ['quality', 'risk', 'resource']
+                },
+                research: {
+                    projectSize: 'medium',
+                    complexity: 'high',
+                    riskLevel: 'very-high',
+                    stakeholderCount: 'moderate',
+                    industry: 'other',
+                    focusAreas: ['risk', 'communication', 'change']
+                }
+            };
+
+            const example = examples[type];
+            if (example) {
+                // Populate form with example data
+                document.getElementById('project-size').value = example.projectSize;
+                document.getElementById('project-complexity').value = example.complexity;
+                document.getElementById('risk-level').value = example.riskLevel;
+                document.getElementById('stakeholder-count').value = example.stakeholderCount;
+                document.getElementById('industry').value = example.industry;
+                
+                // Clear existing checkboxes
+                document.querySelectorAll('input[name="focus-areas"]').forEach(cb => cb.checked = false);
+                
+                // Check relevant focus areas
+                example.focusAreas.forEach(area => {
+                    const checkbox = document.getElementById(`focus-${area}`);
+                    if (checkbox) checkbox.checked = true;
+                });
+
+                // Generate recommendations
+                generateRecommendations();
+            }
+        }
+    </script>
+</body>
+</html>
+

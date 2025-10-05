@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standards Repository - PM Standards Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                        <a href="books.html" class="dropdown-item">📚 Books & PDFs</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                    <div class="dropdown">
+                        <a href="comparison.html#risk" class="dropdown-item">Risk Management</a>
+                        <a href="comparison.html#stakeholder" class="dropdown-item">Stakeholder Management</a>
+                        <a href="comparison.html#quality" class="dropdown-item">Quality Management</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero">
+            <h1>Standards Repository</h1>
+            <p>Browse and explore project management standards with direct access to official PDFs and documents.</p>
+        </div>
+
+        <!-- Quick Access to Books -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">📚 Quick Access to Official Standards</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="comparison-card" onclick="openBook('PMBOK')">
+                    <div class="standard-header">
+                        <div class="standard-name">📖 PMBOK Guide 7th Edition</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Official PMI Project Management Body of Knowledge</p>
+                        <button class="btn btn-primary">Open PDF</button>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="openBook('PRINCE2')">
+                    <div class="standard-header">
+                        <div class="standard-name">📋 PRINCE2 7th Edition</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Official AXELOS PRINCE2 Methodology</p>
+                        <button class="btn btn-primary">Open PDF</button>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="openBook('ISO21500')">
+                    <div class="standard-header">
+                        <div class="standard-name">📊 ISO 21500:2021</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>International Standard for Project Management</p>
+                        <button class="btn btn-primary">Open PDF</button>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="openBook('ISO21502')">
+                    <div class="standard-header">
+                        <div class="standard-name">📈 ISO 21502:2020</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Project, Programme and Portfolio Management</p>
+                        <button class="btn btn-primary">Open PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="repository-layout">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Standards Navigation</h3>
+                
+                <div class="standard-group">
+                    <div class="standard-title" onclick="toggleStandard('pmbok')">
+                        PMBOK 7
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <ul class="topic-list" id="pmbok-topics">
+                        <li class="topic-item" data-topic="Risk Management">Risk Management</li>
+                        <li class="topic-item" data-topic="Stakeholder Management">Stakeholder Management</li>
+                        <li class="topic-item" data-topic="Quality Management">Quality Management</li>
+                        <li class="topic-item" data-topic="Scope Management">Scope Management</li>
+                        <li class="topic-item" data-topic="Time Management">Time Management</li>
+                        <li class="topic-item" data-topic="Cost Management">Cost Management</li>
+                    </ul>
+                </div>
+
+                <div class="standard-group">
+                    <div class="standard-title" onclick="toggleStandard('prince2')">
+                        PRINCE2
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <ul class="topic-list" id="prince2-topics">
+                        <li class="topic-item" data-topic="Risk Management">Risk Management</li>
+                        <li class="topic-item" data-topic="Stakeholder Management">Stakeholder Management</li>
+                        <li class="topic-item" data-topic="Quality Management">Quality Management</li>
+                        <li class="topic-item" data-topic="Change Management">Change Management</li>
+                        <li class="topic-item" data-topic="Progress Management">Progress Management</li>
+                    </ul>
+                </div>
+
+                <div class="standard-group">
+                    <div class="standard-title" onclick="toggleStandard('iso21500')">
+                        ISO 21500
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <ul class="topic-list" id="iso21500-topics">
+                        <li class="topic-item" data-topic="Risk Management">Risk Management</li>
+                        <li class="topic-item" data-topic="Stakeholder Management">Stakeholder Management</li>
+                        <li class="topic-item" data-topic="Quality Management">Quality Management</li>
+                        <li class="topic-item" data-topic="Resource Management">Resource Management</li>
+                        <li class="topic-item" data-topic="Communication Management">Communication Management</li>
+                    </ul>
+                </div>
+
+                <div class="standard-group">
+                    <div class="standard-title" onclick="toggleStandard('iso21502')">
+                        ISO 21502
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <ul class="topic-list" id="iso21502-topics">
+                        <li class="topic-item" data-topic="Risk Management">Risk Management</li>
+                        <li class="topic-item" data-topic="Stakeholder Management">Stakeholder Management</li>
+                        <li class="topic-item" data-topic="Quality Management">Quality Management</li>
+                        <li class="topic-item" data-topic="Portfolio Management">Portfolio Management</li>
+                        <li class="topic-item" data-topic="Programme Management">Programme Management</li>
+                    </ul>
+                </div>
+
+                <div class="bookmark-section">
+                    <h4>Bookmarks</h4>
+                    <div id="bookmark-list">
+                        <p class="text-light">No bookmarks yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panel -->
+            <div class="content-panel">
+                <div class="section-content active" id="welcome">
+                    <div class="section-header">
+                        <div class="section-title">Welcome to Standards Repository</div>
+                        <div class="section-reference">Browse and explore project management standards</div>
+                    </div>
+                    <div class="section-text">
+                        <p>Select a topic from the sidebar to view detailed information from different project management standards. Each section provides comprehensive guidance and best practices.</p>
+                        
+                        <h4>Available Standards:</h4>
+                        <ul>
+                            <li><strong>PMBOK 7:</strong> Project Management Body of Knowledge - Comprehensive guide to project management practices</li>
+                            <li><strong>PRINCE2:</strong> Projects in Controlled Environments - Structured project management method</li>
+                            <li><strong>ISO 21500:</strong> Guidance on Project Management - International standard for project management</li>
+                            <li><strong>ISO 21502:</strong> Project, Programme and Portfolio Management - Comprehensive management standard</li>
+                        </ul>
+
+                        <h4>Features:</h4>
+                        <ul>
+                            <li>📚 Direct access to official PDFs</li>
+                            <li>🔗 Deep linking to specific sections</li>
+                            <li>🔖 Bookmark important sections</li>
+                            <li>🔍 Search across all standards</li>
+                            <li>⚖️ Compare approaches between frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Book opening functionality
+        function openBook(bookType) {
+            const bookUrls = {
+                'PMBOK': 'https://sameeha236.github.io/pm-standards-pdfs/PMBOK.pdf',
+                'PRINCE2': 'https://sameeha236.github.io/pm-standards-pdfs/PRINCE2.pdf',
+                'ISO21500': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21500.pdf',
+                'ISO21502': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21502.pdf'
+            };
+            
+            const bookTitles = {
+                'PMBOK': 'PMBOK Guide 7th Edition',
+                'PRINCE2': 'PRINCE2 7th Edition',
+                'ISO21500': 'ISO 21500:2021',
+                'ISO21502': 'ISO 21502:2020'
+            };
+            
+            const url = `pdf-viewer.html?file=${encodeURIComponent(bookUrls[bookType])}&title=${encodeURIComponent(bookTitles[bookType])}`;
+            window.open(url, '_blank');
+        }
+
+        // Repository specific functionality
+        function toggleStandard(standardId) {
+            const topicList = document.getElementById(standardId + '-topics');
+            const toggleIcon = document.querySelector(`[onclick="toggleStandard('${standardId}')"] .toggle-icon`);
+            
+            if (topicList.style.display === 'none') {
+                topicList.style.display = 'block';
+                toggleIcon.textContent = '▼';
+            } else {
+                topicList.style.display = 'none';
+                toggleIcon.textContent = '▶';
+            }
+        }
+
+        // Initialize topic lists as collapsed
+        document.addEventListener('DOMContentLoaded', () => {
+            const topicLists = document.querySelectorAll('.topic-list');
+            topicLists.forEach(list => {
+                list.style.display = 'none';
+            });
+
+            // Load standards data and populate sidebar
+            loadStandardsData();
+        });
+
+        async function loadStandardsData() {
+            try {
+                const response = await fetch('/api/standards');
+                const standards = await response.json();
+                
+                // Group standards by framework and topic
+                const groupedStandards = {};
+                standards.forEach(standard => {
+                    if (!groupedStandards[standard.standard]) {
+                        groupedStandards[standard.standard] = {};
+                    }
+                    if (!groupedStandards[standard.standard][standard.topic]) {
+                        groupedStandards[standard.standard][standard.topic] = [];
+                    }
+                    groupedStandards[standard.standard][standard.topic].push(standard);
+                });
+
+                // Populate sidebar with actual data
+                populateSidebar(groupedStandards);
+            } catch (error) {
+                console.error('Error loading standards:', error);
+            }
+        }
+
+        function populateSidebar(groupedStandards) {
+            // This would be populated with actual data from the API
+            // For now, we'll use the static structure
+        }
+
+        // Topic selection handler
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('topic-item')) {
+                const topic = e.target.dataset.topic;
+                loadTopicContent(topic);
+            }
+        });
+
+        async function loadTopicContent(topic) {
+            try {
+                const response = await fetch('/api/standards');
+                const standards = await response.json();
+                const topicStandards = standards.filter(s => s.topic === topic);
+                
+                const contentPanel = document.querySelector('.content-panel');
+                contentPanel.innerHTML = '';
+
+                if (topicStandards.length === 0) {
+                    contentPanel.innerHTML = `
+                        <div class="section-content active">
+                            <div class="section-header">
+                                <div class="section-title">No content found</div>
+                            </div>
+                            <div class="section-text">
+                                <p>No standards found for the topic "${topic}". Please try another topic.</p>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Group by standard
+                const groupedByStandard = {};
+                topicStandards.forEach(standard => {
+                    if (!groupedByStandard[standard.standard]) {
+                        groupedByStandard[standard.standard] = [];
+                    }
+                    groupedByStandard[standard.standard].push(standard);
+                });
+
+                // Create content for each standard
+                Object.entries(groupedByStandard).forEach(([standardName, standards]) => {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.className = 'section-content';
+                    sectionDiv.id = standardName.toLowerCase().replace(/\s+/g, '-');
+                    
+                    sectionDiv.innerHTML = `
+                        <div class="section-header">
+                            <div class="section-title">${standardName} - ${topic}</div>
+                        </div>
+                        <div class="section-text">
+                            ${standards.map(standard => `
+                                <div class="standard-section" id="${standard.deep_link.substring(1)}">
+                                    <div class="standard-meta">
+                                        <span class="page-number">📄 Page ${standard.page}</span>
+                                        <span class="standard-badge">${standard.standard}</span>
+                                    </div>
+                                    <div class="excerpt-content">
+                                        <p>${standard.excerpt}</p>
+                                    </div>
+                                    <div class="section-actions">
+                                        <a href="${getBookLink(standard.standard, standard.page)}" class="btn btn-primary" target="_blank">
+                                            📖 Open in Book (Page ${standard.page})
+                                        </a>
+                                        <a href="${standard.deep_link}" class="btn btn-link">🔗 Deep Link</a>
+                                        <button onclick="bookmarkSection('${standard.id}')" class="btn btn-secondary">🔖 Bookmark</button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    contentPanel.appendChild(sectionDiv);
+                });
+
+                // Show first section
+                const firstSection = contentPanel.querySelector('.section-content');
+                if (firstSection) {
+                    firstSection.classList.add('active');
+                }
+
+            } catch (error) {
+                console.error('Error loading topic content:', error);
+            }
+        }
+
+        function getBookLink(standard, page) {
+            const bookUrls = {
+                'PMBOK 7': 'https://sameeha236.github.io/pm-standards-pdfs/PMBOK.pdf',
+                'PRINCE2': 'https://sameeha236.github.io/pm-standards-pdfs/PRINCE2.pdf',
+                'ISO 21500': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21500.pdf',
+                'ISO 21502': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21502.pdf'
+            };
+            
+            const bookTitles = {
+                'PMBOK 7': 'PMBOK Guide 7th Edition',
+                'PRINCE2': 'PRINCE2 7th Edition',
+                'ISO 21500': 'ISO 21500:2021',
+                'ISO 21502': 'ISO 21502:2020'
+            };
+            
+            const url = bookUrls[standard];
+            const title = bookTitles[standard];
+            
+            if (url && title) {
+                return `pdf-viewer.html?file=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&page=${page}`;
+            }
+            return '#';
+        }
+
+        function bookmarkSection(sectionId) {
+            // Implement bookmarking functionality
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            if (!bookmarks.includes(sectionId)) {
+                bookmarks.push(sectionId);
+                localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+                updateBookmarkList();
+            }
+        }
+
+        function updateBookmarkList() {
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+            const bookmarkList = document.getElementById('bookmark-list');
+            
+            if (bookmarks.length === 0) {
+                bookmarkList.innerHTML = '<p class="text-light">No bookmarks yet</p>';
+            } else {
+                bookmarkList.innerHTML = bookmarks.map(id => 
+                    `<div class="bookmark-item">
+                        <a href="#" onclick="loadBookmark('${id}')">Section ${id}</a>
+                        <button onclick="removeBookmark('${id}')">×</button>
+                    </div>`
+                ).join('');
+            }
+        }
+
+        // Initialize bookmarks
+        document.addEventListener('DOMContentLoaded', () => {
+            updateBookmarkList();
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights Dashboard - PM Standards Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                    <div class="dropdown">
+                        <a href="comparison.html#risk" class="dropdown-item">Risk Management</a>
+                        <a href="comparison.html#stakeholder" class="dropdown-item">Stakeholder Management</a>
+                        <a href="comparison.html#quality" class="dropdown-item">Quality Management</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero">
+            <h1>Insights Dashboard</h1>
+            <p>Analytics and insights about project management standards, overlaps, differences, and unique aspects.</p>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-standards">-</div>
+                <div class="stat-label">Total Standards Sections</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-topics">-</div>
+                <div class="stat-label">Topics Covered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-comparisons">-</div>
+                <div class="stat-label">Comparisons Available</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Standards Frameworks</div>
+            </div>
+        </div>
+
+        <!-- Standards Distribution Chart -->
+        <div class="chart-container">
+            <h3>Standards Distribution by Framework</h3>
+            <div id="standards-chart"></div>
+        </div>
+
+        <!-- Search Controls -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">🔍 Search Insights</h3>
+            </div>
+            <div class="search-controls">
+                <div class="search-bar">
+                    <input type="text" id="insights-search" class="search-input" placeholder="Search similarities, differences, unique points...">
+                    <button onclick="searchInsights()" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Insights Results -->
+        <div class="insights-container" id="insights-container">
+            <!-- Content will be dynamically loaded here -->
+        </div>
+
+        <!-- Key Text Insights Summary -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">📊 Overall Insights Summary</h3>
+            </div>
+            <div class="insights-summary">
+                <div class="insight-category">
+                    <div class="insight-header">
+                        <h4>🤝 Common Practices (Similarities)</h4>
+                        <span class="insight-count" id="similarities-count">-</span>
+                    </div>
+                    <div class="insight-content" id="similarities-summary">
+                        <div class="loading">Loading similarities...</div>
+                    </div>
+                </div>
+                
+                <div class="insight-category">
+                    <div class="insight-header">
+                        <h4>⚡ Key Differences</h4>
+                        <span class="insight-count" id="differences-count">-</span>
+                    </div>
+                    <div class="insight-content" id="differences-summary">
+                        <div class="loading">Loading differences...</div>
+                    </div>
+                </div>
+                
+                <div class="insight-category">
+                    <div class="insight-header">
+                        <h4>💎 Unique Contributions</h4>
+                        <span class="insight-count" id="unique-count">-</span>
+                    </div>
+                    <div class="insight-content" id="unique-summary">
+                        <div class="loading">Loading unique points...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Analytics -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Detailed Analytics</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">PMBOK 7 Coverage</div>
+                    </div>
+                    <div class="comparison-content">
+                        <div id="pmbok-stats">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">PRINCE2 Coverage</div>
+                    </div>
+                    <div class="comparison-content">
+                        <div id="prince2-stats">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">ISO 21500 Coverage</div>
+                    </div>
+                    <div class="comparison-content">
+                        <div id="iso21500-stats">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">ISO 21502 Coverage</div>
+                    </div>
+                    <div class="comparison-content">
+                        <div id="iso21502-stats">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Insights -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Comparison Insights</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">High Overlap Areas</div>
+                    </div>
+                    <div class="comparison-content">
+                        <div id="high-overlap">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="standard-header">
+                        <div class="standard-name">Unique Approaches</div>
+                    </div>
+                    <div class="comparison-content">
+                        <div id="unique-approaches">
+                            <div class="loading">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Export Analytics</h3>
+            </div>
+            <div class="comparison-content">
+                <p>Export dashboard data and analytics for further analysis:</p>
+                <div class="form-group">
+                    <button onclick="exportAnalytics('standards')" class="btn btn-primary">Export Standards Data</button>
+                    <button onclick="exportAnalytics('comparison')" class="btn btn-primary">Export Comparison Data</button>
+                    <button onclick="exportAnalytics('analytics')" class="btn btn-accent">Export Analytics Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Enhanced Insights Dashboard with Search and Bookmarking
+        let insightsData = {
+            standards: [],
+            comparisons: [],
+            topics: [],
+            bookmarks: JSON.parse(localStorage.getItem('insights-bookmarks') || '[]')
+        };
+
+        let currentSearchResults = [];
+        let filteredData = [];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadInsightsData();
+            updateDashboardStats();
+            createStandardsChart();
+            renderComparisonInsights();
+            setupEventListeners();
+            displayAllInsights();
+        });
+
+        async function loadInsightsData() {
+            try {
+                const [standardsResponse, comparisonsResponse] = await Promise.all([
+                    fetch('/api/standards'),
+                    fetch('/api/comparison')
+                ]);
+
+                insightsData.standards = await standardsResponse.json();
+                insightsData.comparisons = await comparisonsResponse.json();
+                filteredData = [...insightsData.standards];
+            } catch (error) {
+                console.error('Error loading insights data:', error);
+            }
+        }
+
+        function setupEventListeners() {
+            // Real-time search
+            const searchInput = document.getElementById('insights-search');
+            if (searchInput) {
+                let searchTimeout;
+                searchInput.addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        if (e.target.value.trim()) {
+                            performSearch(e.target.value.trim());
+                        } else {
+                            displayAllInsights();
+                        }
+                    }, 300);
+                });
+            }
+        }
+
+        function updateDashboardStats() {
+            const totalStandards = insightsData.standards.length;
+            const totalTopics = new Set(insightsData.standards.map(s => s.topic)).size;
+            const totalComparisons = insightsData.comparisons.length;
+
+            document.getElementById('total-standards').textContent = totalStandards;
+            document.getElementById('total-topics').textContent = totalTopics;
+            document.getElementById('total-comparisons').textContent = totalComparisons;
+        }
+
+        function createStandardsChart() {
+            const frameworks = {};
+            insightsData.standards.forEach(standard => {
+                frameworks[standard.standard] = (frameworks[standard.standard] || 0) + 1;
+            });
+
+            const chartContainer = document.getElementById('standards-chart');
+            if (!chartContainer) return;
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '100%');
+            svg.setAttribute('height', '300');
+            svg.setAttribute('viewBox', '0 0 500 300');
+
+            const data = Object.entries(frameworks);
+            const maxValue = Math.max(...data.map(([_, value]) => value));
+            const barWidth = 400 / data.length;
+            const barHeight = 200;
+
+            data.forEach(([framework, value], index) => {
+                const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                const height = (value / maxValue) * barHeight;
+                const x = index * barWidth + 50;
+                const y = 250 - height;
+
+                bar.setAttribute('x', x);
+                bar.setAttribute('y', y);
+                bar.setAttribute('width', barWidth - 20);
+                bar.setAttribute('height', height);
+                bar.setAttribute('fill', '#2d7a7a');
+                bar.setAttribute('rx', '4');
+
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', x + barWidth/2 - 10);
+                text.setAttribute('y', 270);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('font-size', '11');
+                text.setAttribute('fill', '#2d3748');
+                text.textContent = framework;
+
+                const valueText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                valueText.setAttribute('x', x + barWidth/2 - 10);
+                valueText.setAttribute('y', y - 8);
+                valueText.setAttribute('text-anchor', 'middle');
+                valueText.setAttribute('font-size', '12');
+                valueText.setAttribute('font-weight', 'bold');
+                valueText.setAttribute('fill', '#1a365d');
+                valueText.textContent = value;
+
+                svg.appendChild(bar);
+                svg.appendChild(text);
+                svg.appendChild(valueText);
+            });
+
+            chartContainer.innerHTML = '';
+            chartContainer.appendChild(svg);
+        }
+
+        function renderComparisonInsights() {
+            // Extract data from comparisons.csv
+            const comparisonData = insightsData.comparisons[0] || {};
+            
+            // Update counts (simplified for now)
+            document.getElementById('similarities-count').textContent = comparisonData.similarities ? '1' : '0';
+            document.getElementById('differences-count').textContent = comparisonData.differences ? '1' : '0';
+            document.getElementById('unique-count').textContent = '4'; // Four standards with unique points
+
+            // Display the actual content from comparisons.csv
+            const similaritiesHtml = comparisonData.similarities ? 
+                `<div class="insight-item">
+                    <div class="insight-text">${formatInsightText(comparisonData.similarities)}</div>
+                </div>` : '<div class="insight-item"><div class="insight-text">No similarities data available</div></div>';
+
+            const differencesHtml = comparisonData.differences ? 
+                `<div class="insight-item">
+                    <div class="insight-text">${formatInsightText(comparisonData.differences)}</div>
+                </div>` : '<div class="insight-item"><div class="insight-text">No differences data available</div></div>';
+
+            const uniqueHtml = `
+                <div class="insight-item">
+                    <div class="insight-topic">PMBOK 7 Unique Contributions</div>
+                    <div class="insight-text">${formatInsightText(comparisonData.unique_pmbok || 'No unique PMBOK 7 data available')}</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-topic">PRINCE2 Unique Contributions</div>
+                    <div class="insight-text">${formatInsightText(comparisonData.unique_prince2 || 'No unique PRINCE2 data available')}</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-topic">ISO 21500 Unique Contributions</div>
+                    <div class="insight-text">${formatInsightText(comparisonData.unique_iso21500 || 'No unique ISO 21500 data available')}</div>
+                </div>
+                <div class="insight-item">
+                    <div class="insight-topic">ISO 21502 Unique Contributions</div>
+                    <div class="insight-text">${formatInsightText(comparisonData.unique_iso21502 || 'No unique ISO 21502 data available')}</div>
+                </div>
+            `;
+
+            document.getElementById('similarities-summary').innerHTML = similaritiesHtml;
+            document.getElementById('differences-summary').innerHTML = differencesHtml;
+            document.getElementById('unique-summary').innerHTML = uniqueHtml;
+        }
+
+        function formatInsightText(text) {
+            if (!text) return '';
+            
+            // Convert numbered lists and bullet points to HTML
+            let formattedText = text
+                .replace(/(\d+\.\s)/g, '<br><strong>$1</strong>')
+                .replace(/(\s{4}◦\s)/g, '<br>&nbsp;&nbsp;&nbsp;&nbsp;• ')
+                .replace(/(\s{8}▪\s)/g, '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ ')
+                .replace(/\n\n/g, '<br><br>')
+                .replace(/\n/g, '<br>');
+
+            return formattedText;
+        }
+
+
+
+        function performSearch(query) {
+            const searchTerms = query.toLowerCase().split(' ').filter(term => term.length > 2);
+            
+            // Search in standards data
+            const standardsResults = insightsData.standards.filter(standard => {
+                const searchableText = [
+                    standard.topic,
+                    standard.standard,
+                    standard.excerpt
+                ].join(' ').toLowerCase();
+
+                return searchTerms.some(term => searchableText.includes(term));
+            });
+
+            // Search in comparisons data
+            const comparisonData = insightsData.comparisons[0] || {};
+            const comparisonResults = [];
+            
+            const searchableComparisons = [
+                { type: 'similarities', content: comparisonData.similarities || '', title: 'Common Practices & Similarities' },
+                { type: 'differences', content: comparisonData.differences || '', title: 'Key Differences' },
+                { type: 'unique_pmbok', content: comparisonData.unique_pmbok || '', title: 'PMBOK 7 Unique Points' },
+                { type: 'unique_prince2', content: comparisonData.unique_prince2 || '', title: 'PRINCE2 Unique Points' },
+                { type: 'unique_iso21500', content: comparisonData.unique_iso21500 || '', title: 'ISO 21500 Unique Points' },
+                { type: 'unique_iso21502', content: comparisonData.unique_iso21502 || '', title: 'ISO 21502 Unique Points' }
+            ];
+
+            searchableComparisons.forEach(item => {
+                if (item.content && searchTerms.some(term => item.content.toLowerCase().includes(term))) {
+                    comparisonResults.push({
+                        type: 'comparison',
+                        category: item.type,
+                        title: item.title,
+                        content: item.content,
+                        excerpt: item.content.substring(0, 300) + '...'
+                    });
+                }
+            });
+
+            currentSearchResults = { standards: standardsResults, comparisons: comparisonResults };
+            displaySearchResults(currentSearchResults, query);
+        }
+
+        function displaySearchResults(results, query) {
+            const container = document.getElementById('insights-container');
+            if (!container) return;
+
+            const totalResults = (results.standards?.length || 0) + (results.comparisons?.length || 0);
+
+            if (totalResults === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>No results found for "${query}"</h3>
+                        <p>Try different search terms or browse all insights below.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let resultsHtml = '';
+
+            // Display comparison results first (as they are more comprehensive)
+            if (results.comparisons && results.comparisons.length > 0) {
+                resultsHtml += `
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <div class="card-header">
+                            <h3 class="card-title">📊 Comparison Insights (${results.comparisons.length} found)</h3>
+                        </div>
+                        <div style="padding: 1rem;">
+                            ${results.comparisons.map((result, index) => `
+                                <div class="search-result-item">
+                                    <div class="search-result-header">
+                                        <div class="search-result-topic">${result.title}</div>
+                                        <div class="search-result-badge">${result.category.replace('_', ' ').toUpperCase()}</div>
+                                        <button class="bookmark-btn" 
+                                                onclick="toggleBookmark('comp-${index}', '${result.title}', '${result.category}')"
+                                                title="Bookmark this insight">
+                                            ⭐
+                                        </button>
+                                    </div>
+                                    <div class="search-result-content">
+                                        ${highlightText(formatInsightText(result.excerpt), query)}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Display standards results
+            if (results.standards && results.standards.length > 0) {
+                resultsHtml += `
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <div class="card-header">
+                            <h3 class="card-title">📚 Standards Content (${results.standards.length} found)</h3>
+                        </div>
+                        <div style="padding: 1rem;">
+                            ${results.standards.map((result, index) => `
+                                <div class="search-result-item">
+                                    <div class="search-result-header">
+                                        <div class="search-result-topic">${highlightText(result.topic, query)}</div>
+                                        <div class="search-result-badge">${result.standard}</div>
+                                        <button class="bookmark-btn ${isBookmarked(result) ? 'bookmarked' : ''}" 
+                                                onclick="toggleBookmark('std-${index}', '${result.topic}', '${result.standard}')"
+                                                title="Bookmark this insight">
+                                            ⭐
+                                        </button>
+                                    </div>
+                                    <div class="search-result-content">
+                                        ${highlightText(result.excerpt, query)}
+                                        ${result.page && result.page !== '-' ? `
+                                            <div class="insight-source">
+                                                Reference: Page ${result.page}
+                                                <a href="pdf-viewer.html?file=${encodeURIComponent(getBookUrl(result.standard))}&title=${encodeURIComponent(result.standard)}&page=${result.page}" 
+                                                   target="_blank" class="page-link" style="margin-left: 1rem;">
+                                                    📖 View Page
+                                                </a>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = resultsHtml + renderBookmarks();
+        }
+
+        function displayAllInsights() {
+            const container = document.getElementById('insights-container');
+            if (!container) return;
+
+            const topicGroups = {};
+            filteredData.forEach(standard => {
+                if (!topicGroups[standard.topic]) {
+                    topicGroups[standard.topic] = [];
+                }
+                topicGroups[standard.topic].push(standard);
+            });
+
+            const topicsHtml = Object.entries(topicGroups)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([topic, standards]) => `
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <div class="card-header">
+                            <h3 class="card-title">${topic}</h3>
+                        </div>
+                        <div class="insights-summary">
+                            ${standards.map((standard, index) => `
+                                <div class="insight-category">
+                                    <div class="insight-header">
+                                        <h4>${standard.standard}</h4>
+                                        <button class="bookmark-btn ${isBookmarked(standard) ? 'bookmarked' : ''}" 
+                                                onclick="toggleBookmark('${topic}-${index}', '${standard.topic}', '${standard.standard}')"
+                                                title="Bookmark this insight">
+                                            ⭐
+                                        </button>
+                                    </div>
+                                    <div class="insight-content">
+                                        <div class="insight-text">${standard.excerpt}</div>
+                                        ${standard.page && standard.page !== '-' ? `
+                                            <div class="insight-source">
+                                                Reference: Page ${standard.page}
+                                                <a href="pdf-viewer.html?file=${encodeURIComponent(getBookUrl(standard.standard))}&title=${encodeURIComponent(standard.standard)}&page=${standard.page}" 
+                                                   target="_blank" class="page-link" style="margin-left: 1rem;">
+                                                    📖 View Page
+                                                </a>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+
+            container.innerHTML = topicsHtml + renderBookmarks();
+        }
+
+
+
+        function searchInsights() {
+            const query = document.getElementById('insights-search').value.trim();
+            if (query) {
+                performSearch(query);
+            }
+        }
+
+        function highlightText(text, query) {
+            if (!query) return text;
+            const terms = query.toLowerCase().split(' ').filter(term => term.length > 2);
+            let highlightedText = text;
+            
+            terms.forEach(term => {
+                const regex = new RegExp(`(${term})`, 'gi');
+                highlightedText = highlightedText.replace(regex, '<span class="highlight">$1</span>');
+            });
+            
+            return highlightedText;
+        }
+
+        function getBookUrl(standard) {
+            const bookUrls = {
+                'PMBOK 7': 'https://sameeha236.github.io/pm-standards-pdfs/PMBOK.pdf',
+                'PRINCE2': 'https://sameeha236.github.io/pm-standards-pdfs/PRINCE2.pdf',
+                'ISO 21500': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21500.pdf',
+                'ISO 21502': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21502.pdf'
+            };
+            return bookUrls[standard] || '#';
+        }
+
+        function toggleBookmark(id, topic, standard) {
+            const bookmark = { id, topic, standard, timestamp: Date.now() };
+            const existingIndex = insightsData.bookmarks.findIndex(b => b.id === id);
+            
+            if (existingIndex >= 0) {
+                insightsData.bookmarks.splice(existingIndex, 1);
+            } else {
+                insightsData.bookmarks.push(bookmark);
+            }
+            
+            localStorage.setItem('insights-bookmarks', JSON.stringify(insightsData.bookmarks));
+            
+            // Update bookmark button
+            const button = event.target;
+            button.classList.toggle('bookmarked');
+            
+            // Re-render bookmarks section
+            const container = document.getElementById('insights-container');
+            if (container.innerHTML.includes('bookmarks-section')) {
+                const currentContent = container.innerHTML;
+                const bookmarksIndex = currentContent.lastIndexOf('<div class="bookmarks-section">');
+                if (bookmarksIndex >= 0) {
+                    container.innerHTML = currentContent.substring(0, bookmarksIndex) + renderBookmarks();
+                }
+            }
+        }
+
+        function isBookmarked(standard) {
+            return insightsData.bookmarks.some(b => 
+                b.topic === standard.topic && b.standard === standard.standard
+            );
+        }
+
+        function renderBookmarks() {
+            if (insightsData.bookmarks.length === 0) return '';
+            
+            return `
+                <div class="bookmarks-section">
+                    <h4>📚 Your Bookmarks (${insightsData.bookmarks.length})</h4>
+                    ${insightsData.bookmarks.map(bookmark => `
+                        <div class="bookmark-item">
+                            <div class="bookmark-text">
+                                <strong>${bookmark.topic}</strong> - ${bookmark.standard}
+                            </div>
+                            <button class="remove-bookmark" onclick="removeBookmark('${bookmark.id}')" title="Remove bookmark">
+                                ✕
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function removeBookmark(id) {
+            insightsData.bookmarks = insightsData.bookmarks.filter(b => b.id !== id);
+            localStorage.setItem('insights-bookmarks', JSON.stringify(insightsData.bookmarks));
+            
+            // Re-render current view
+            const searchInput = document.getElementById('insights-search');
+            if (searchInput.value.trim()) {
+                performSearch(searchInput.value.trim());
+            } else {
+                displayAllInsights();
+            }
+        }
+
+        async function exportAnalytics(type) {
+            try {
+                const response = await fetch(`/api/export?type=${type}`);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${type}_analytics.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Error exporting data');
+            }
+        }
+    </script>
+</body>
+</html>
+

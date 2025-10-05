@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standards Comparison - PM Standards Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">PM Standards Hub</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="repository.html" class="nav-link">Standards Repository</a>
+                    <div class="dropdown">
+                        <a href="repository.html#pmbok" class="dropdown-item">PMBOK 7</a>
+                        <a href="repository.html#prince2" class="dropdown-item">PRINCE2</a>
+                        <a href="repository.html#iso21500" class="dropdown-item">ISO 21500</a>
+                        <a href="repository.html#iso21502" class="dropdown-item">ISO 21502</a>
+                        <a href="books.html" class="dropdown-item">📚 Books & PDFs</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="nav-link">Comparison</a>
+                    <div class="dropdown">
+                        <a href="comparison.html#topic=Risk%20Management" class="dropdown-item">Risk Management</a>
+                        <a href="comparison.html#topic=Stakeholder%20Management" class="dropdown-item">Stakeholder Management</a>
+                        <a href="comparison.html#topic=Quality%20Management" class="dropdown-item">Quality Management</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">Insights</a>
+                </li>
+                <li class="nav-item">
+                    <a href="scenarios.html" class="nav-link">Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.html" class="nav-link">Admin</a>
+                </li>
+            </ul>
+            <div class="global-search">
+                <input type="text" id="global-search" class="search-input" placeholder="Search standards...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="hero">
+            <h1>Standards Comparison</h1>
+            <p>Compare project management standards side-by-side to understand differences, similarities, and unique approaches.</p>
+        </div>
+
+        <!-- Topic Selector -->
+        <div class="topic-selector">
+            <label for="topic-select" class="form-label">Select a topic to compare:</label>
+            <select id="topic-select" class="topic-select">
+                <option value="">Choose a topic...</option>
+            </select>
+        </div>
+
+        <!-- Comparison Grid -->
+        <div class="comparison-grid" id="comparison-grid">
+            <div class="comparison-card" data-standard="PMBOK 7">
+                <div class="standard-header">
+                    <div class="standard-name">PMBOK 7</div>
+                    <div class="standard-badge">Guide</div>
+                </div>
+                <div class="comparison-content">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">📚</div>
+                        <p>Select a topic to view PMBOK 7 comparison</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comparison-card" data-standard="PRINCE2">
+                <div class="standard-header">
+                    <div class="standard-name">PRINCE2</div>
+                    <div class="standard-badge">Method</div>
+                </div>
+                <div class="comparison-content">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">🏗️</div>
+                        <p>Select a topic to view PRINCE2 comparison</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comparison-card" data-standard="ISO 21500">
+                <div class="standard-header">
+                    <div class="standard-name">ISO 21500</div>
+                    <div class="standard-badge">Standard</div>
+                </div>
+                <div class="comparison-content">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">🌐</div>
+                        <p>Select a topic to view ISO 21500 comparison</p>
+                    </div>
+                </div>
+            </div>
+            <div class="comparison-card" data-standard="ISO 21502">
+                <div class="standard-header">
+                    <div class="standard-name">ISO 21502</div>
+                    <div class="standard-badge">Practice</div>
+                </div>
+                <div class="comparison-content">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">⚙️</div>
+                        <p>Select a topic to view ISO 21502 comparison</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loading-indicator" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading comparison data...</p>
+        </div>
+
+        <!-- Comparison Tabs -->
+        <div class="comparison-tabs">
+            <button class="tab-button active" data-tab="similarities">Similarities</button>
+            <button class="tab-button" data-tab="differences">Differences</button>
+            <button class="tab-button" data-tab="unique">Unique Points</button>
+        </div>
+
+        <div class="tab-content active" data-tab="similarities">
+            <h3>Similarities</h3>
+            <p>Select a topic to view similarities between standards.</p>
+        </div>
+
+        <div class="tab-content" data-tab="differences">
+            <h3>Differences</h3>
+            <p>Select a topic to view differences between standards.</p>
+        </div>
+
+        <div class="tab-content" data-tab="unique">
+            <h3>Unique Points</h3>
+            <p>Select a topic to view unique aspects of each standard.</p>
+        </div>
+
+        <!-- Quick Comparison Cards -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Quick Comparison Topics</h3>
+            </div>
+            <div class="dashboard-grid">
+                <div class="comparison-card" onclick="loadQuickComparison('10. Risk & Uncertainty Management')">
+                    <div class="standard-header">
+                        <div class="standard-name">🎯 Risk & Uncertainty Management</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Compare risk management approaches across all standards</p>
+                        <a href="#" class="btn btn-link">Compare Now</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="loadQuickComparison('5. Stakeholder Engagement & Communication')">
+                    <div class="standard-header">
+                        <div class="standard-name">👥 Stakeholder Engagement</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Compare stakeholder engagement strategies</p>
+                        <a href="#" class="btn btn-link">Compare Now</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="loadQuickComparison('6. Quality Management')">
+                    <div class="standard-header">
+                        <div class="standard-name">✅ Quality Management</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Compare quality assurance and control processes</p>
+                        <a href="#" class="btn btn-link">Compare Now</a>
+                    </div>
+                </div>
+
+                <div class="comparison-card" onclick="loadQuickComparison('1. Guiding Principles & Concepts')">
+                    <div class="standard-header">
+                        <div class="standard-name">🧭 Guiding Principles</div>
+                    </div>
+                    <div class="comparison-content">
+                        <p>Compare foundational principles and concepts</p>
+                        <a href="#" class="btn btn-link">Compare Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-navy); color: var(--white); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2024 PM Standards Hub. A comprehensive project management standards comparison tool.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Enhanced quick comparison function
+        function loadQuickComparison(topic) {
+            // Update hash for deep linking
+            window.location.hash = 'topic=' + encodeURIComponent(topic);
+            
+            // Wait for app to be ready and load comparison
+            if (window.app) {
+                const select = document.getElementById('topic-select');
+                if (select) {
+                    // Find matching topic in dropdown options
+                    const options = Array.from(select.options);
+                    const matchingOption = options.find(option => 
+                        option.value === topic || 
+                        option.value.toLowerCase().includes(topic.toLowerCase())
+                    );
+                    
+                    if (matchingOption) {
+                        select.value = matchingOption.value;
+                        app.loadComparison(matchingOption.value);
+                    } else {
+                        // If exact match not found, try fuzzy resolution
+                        const resolved = app.resolveTopic(topic);
+                        if (resolved) {
+                            select.value = resolved;
+                            app.loadComparison(resolved);
+                        }
+                    }
+                }
+            } else {
+                // If app not ready yet, wait a bit and try again
+                setTimeout(() => loadQuickComparison(topic), 500);
+            }
+        }
+
+        // Auto-load comparison from URL hash on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const hash = new URLSearchParams(window.location.hash.replace('#', ''));
+                const topic = hash.get('topic');
+                if (topic) {
+                    loadQuickComparison(decodeURIComponent(topic));
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+
