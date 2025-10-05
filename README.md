@@ -4,13 +4,27 @@ A comprehensive Project Management Standards Repository & Comparison tool that c
 
 ## Features
 
-- **Standards Repository**: Browse and search through comprehensive project management standards
-- **Side-by-Side Comparison**: Compare standards across different frameworks for specific topics
-- **Scenario Recommender**: Get tailored recommendations based on project characteristics
-- **Insights Dashboard**: View analytics and insights about overlaps, differences, and unique aspects
-- **Deep Linking**: Direct links to specific sections within standards
-- **CSV Import/Export**: Upload and export standards data
+🔍 **Advanced Comparison Engine**
+- Side-by-side comparison of PM standards by topic
+- Deep linking to specific pages in PDF documents
+- Interactive comparison with searchable content
+
+📊 **Insights Dashboard** 
+- Comprehensive analysis of similarities, differences, and unique points
+- Advanced search functionality across all standards
+- Bookmarking system for important insights
+- Visual analytics and charts
+
+📚 **Standards Repository**
+- Complete coverage of 72+ topics across 4 major standards
+- Direct PDF integration with page-level navigation
+- Structured content organization by topic and standard
+
+🎯 **Additional Features**
 - **Global Search**: Search across all standards with keyword highlighting
+- **CSV Import/Export**: Upload and export standards data
+- **Scenario Recommender**: Get tailored recommendations based on project characteristics
+- **Responsive Design**: Works on all devices
 
 ## Technology Stack
 
@@ -18,6 +32,7 @@ A comprehensive Project Management Standards Repository & Comparison tool that c
 - **Database**: SQLite for data storage
 - **Frontend**: Pure HTML, CSS, and JavaScript
 - **File Handling**: CSV parsing and generation
+- **PDF Integration**: Direct linking to online PDF resources
 - **No external frameworks**: Built with vanilla JavaScript for maximum compatibility
 
 ## Installation
@@ -175,4 +190,6 @@ MIT License - See LICENSE file for details
 
 For issues or questions, please check the documentation or contact the development team.
 
+## PDF Resources
 
+This repository also hosts the PDF files for the project management standards used in the comparison tool.
