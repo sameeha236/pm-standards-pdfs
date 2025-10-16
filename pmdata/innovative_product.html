@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Innovative Product Development Project Plan</title>
+    <style>
+      :root {
+        --radius: 12px;
+        --gap: 16px;
+        --gap-lg: 24px;
+        --border: 1px solid #e5e7eb; /* light gray */
+      }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        line-height: 1.6;
+        margin: 0;
+        color: #111827; /* near-black */
+        background: #1a365d; /* light gray background */
+      }
+      .outer {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: var(--gap-lg);
+      }
+      .main-box {
+        border: var(--border);
+        background: #ffffff;
+        border-radius: var(--radius);
+        padding: var(--gap-lg);
+      }
+      header h1 {
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+      }
+      .intro {
+        margin: 0 0 var(--gap-lg) 0;
+      }
+      .stages {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--gap-lg);
+      }
+      .stage-box {
+        border: var(--border);
+        border-radius: var(--radius);
+        padding: var(--gap-lg);
+      }
+      .stage-box h2 {
+        margin: 0 0 6px 0;
+        line-height: 1.35;
+      }
+      .duration {
+        margin: 0 0 var(--gap) 0;
+      }
+      .item-title {
+        margin: var(--gap) 0 4px 0;
+      }
+      .label {
+        font-weight: 600;
+        margin: 10px 0 2px 0;
+      }
+      p {
+        margin: 0 0 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="outer" role="main">
+      <div class="main-box" aria-label="Project Plan Main Container">
+        <header>
+          <h1>Innovative Product Development Project</h1>
+          <p class="intro">Approach: Hybrid (Adaptive + Predictive mix)</p>
+        </header>
+
+        <section class="stages" aria-label="Project Stages">
+
+          <section class="stage-box" aria-labelledby="ip-stage-1-title">
+            <h2 id="ip-stage-1-title">Stage 1: Initiation &amp; Vision (P1)</h2>
+            <p class="duration">Approximate Duration: 1 Month</p>
+
+            <p class="item-title"><strong>1. Appoint Governance</strong></p>
+            <p class="label">Activities:</p>
+            <p>Assign Project Executive and Project Manager (PRINCE2 13.4.1).</p>
+            <p>Define Project Management Team Structure (PRINCE2 6.2.3).</p>
+            <p class="label">Justification:</p>
+            <p>Establishes early control to manage high uncertainty and ambiguity (PMBOK 2.8). Strong governance before major commitments ensures clarity and flexibility.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: 13.4.1, 2.5, 6.2.3 (pp. 241, 46, 96)</em></p>
+
+            <p class="item-title"><strong>2. Initial Justification &amp; Scope</strong></p>
+            <p class="label">Activities:</p>
+            <p>Develop the Outline Business Case (PRINCE2 5.2.1).</p>
+            <p>Define high-level scope via the Project Product Description (PRINCE2 A14) including Acceptance Criteria.</p>
+            <p class="label">Justification:</p>
+            <p>Ensures early viability check and business justification (ISO 21502 4.3.2). Clear acceptance criteria set the baseline for project success.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: 5.2.1, 2.1, A14 (pp. 77, 40, 323)</em></p>
+            <p><em>ISO 21502: 4.3.2 (p. 208)</em></p>
+
+            <p class="item-title"><strong>3. Define Approach &amp; Controls</strong></p>
+            <p class="label">Activities:</p>
+            <p>Select Hybrid/Adaptive Development approach (PMBOK 2.3.3).</p>
+            <p>Define initial Risk (PRINCE2 9) and Quality Management approaches (PRINCE2 8).</p>
+            <p class="label">Justification:</p>
+            <p>Tailored approach fits volatile requirements and maximizes innovation success (ISO 21500 4.6). Governance and control mechanisms ensure balanced flexibility.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: 2.3.3 (p. 127)</em></p>
+            <p><em>ISO 21500: 4.6 (p. 13)</em></p>
+
+            <p class="item-title"><strong>4. Decision Gate 1: Authorize Initiation</strong></p>
+            <p class="label">Justification:</p>
+            <p>Project Board approves initiation funding and resources before moving to detailed planning.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: 14.4.1 (p. 232)</em></p>
+            <p><em>PMBOK: Phase Gates (p. 135)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="ip-stage-2-title">
+            <h2 id="ip-stage-2-title">Stage 2: Detailed Iterative Planning (P2)</h2>
+            <p class="duration">Approximate Duration: 2 Months</p>
+
+            <p class="item-title"><strong>1. Rolling Wave Planning</strong></p>
+            <p class="label">Activities:</p>
+            <p>Develop a detailed Stage Plan using Rolling Wave method.</p>
+            <p>Refine requirements into Product Backlog and User Stories.</p>
+            <p class="label">Justification:</p>
+            <p>Enables flexibility and progressive elaboration; only near-term work is detailed. Effective for uncertain, innovation-driven scopes.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: 7.2.2 (p. 36)</em></p>
+            <p><em>PMBOK: 2.6.2.2 (pp. 176, 363)</em></p>
+            <p><em>PRINCE2: p. 32</em></p>
+
+            <p class="item-title"><strong>2. Risk Budget &amp; Estimation</strong></p>
+            <p class="label">Activities:</p>
+            <p>Estimate work considering uncertainty levels.</p>
+            <p>Update and finalize the Full Business Case (PRINCE2 5.2.1).</p>
+            <p class="label">Justification:</p>
+            <p>Ensures financial viability and manageable risk exposure during early-stage innovation.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: 2.4.2.2 (p. 147)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="ip-stage-3-title">
+            <h2 id="ip-stage-3-title">Stage 3: Iterative Execution &amp; Delivery (P2)</h2>
+            <p class="duration">Approximate Duration: 4 Months</p>
+
+            <p class="item-title"><strong>1. Delivery in Sprints</strong></p>
+            <p class="label">Activities:</p>
+            <p>Execute short, fixed Timeboxed Sprints or Work Packages (PRINCE2 17.4).</p>
+            <p>Deliver the Minimum Viable Product (MVP).</p>
+            <p class="label">Justification:</p>
+            <p>Fixes time and cost while allowing scope flexibility. Focuses on delivering incremental value and validating innovative features early.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: S2.1 (p. 39)</em></p>
+            <p><em>PRINCE2: 17.4 (p. 285)</em></p>
+
+            <p class="item-title"><strong>2. R&amp;D Techniques</strong></p>
+            <p class="label">Activities:</p>
+            <p>Apply Prototyping, Modeling, and Simulation (PMBOK 2.8.3).</p>
+            <p class="label">Justification:</p>
+            <p>Reduces technological uncertainty and clarifies stakeholder needs through tangible feedback.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: 4.4, 2.8.3 (pp. 272, 211, 264)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="ip-stage-4-title">
+            <h2 id="ip-stage-4-title">Stage 4: Monitoring &amp; Control (P2 Iterative M&amp;C)</h2>
+            <p class="duration">Duration: Continuous</p>
+
+            <p class="item-title"><strong>1. Progress Monitoring</strong></p>
+            <p class="label">Activities:</p>
+            <p>Track progress using Kanban Boards, Checkpoint Reports (PRINCE2 A2), and Velocity Charts.</p>
+            <p class="label">Justification:</p>
+            <p>Provides visual and transparent tracking for timely issue detection and adaptive control.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: 2.7.3.3 (p. 201)</em></p>
+            <p><em>PRINCE2: A2 (pp. 308, 209)</em></p>
+
+            <p class="item-title"><strong>2. Quality Control &amp; Learning</strong></p>
+            <p class="label">Activities:</p>
+            <p>Perform continuous Quality Control (ISO 21502 7.11.4). Conduct Iteration Reviews and maintain Lessons Log (PRINCE2 A13).</p>
+            <p class="label">Justification:</p>
+            <p>Embeds quality and learning throughout the lifecycle to ensure ongoing improvement.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: 3.8, 2.5.8 (pp. 79, 170)</em></p>
+            <p><em>ISO 21502: 7.11.4 (p. 46)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="ip-stage-5-title">
+            <h2 id="ip-stage-5-title">Stage 5: Refinement &amp; Transition (P3)</h2>
+            <p class="duration">Approximate Duration: 3 Months</p>
+
+            <p class="item-title"><strong>1. Final Acceptance</strong></p>
+            <p class="label">Activities:</p>
+            <p>Conduct Formal Acceptance and Quality Verification (PRINCE2 8.3.1). Update the Project Plan (PRINCE2 18.4.3).</p>
+            <p class="label">Justification:</p>
+            <p>Confirms deliverables meet quality and stakeholder expectations.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: 2.6 (p. 173)</em></p>
+            <p><em>PRINCE2: 8.3.1 (p. 154)</em></p>
+
+            <p class="item-title"><strong>2. Transition Planning</strong></p>
+            <p class="label">Activities:</p>
+            <p>Prepare Transition Plan for operational handover. Update Benefits Management Approach (PRINCE2 19.4).</p>
+            <p class="label">Justification:</p>
+            <p>Ensures sustained value realization and a smooth shift to business-as-usual (BAU).</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: 7.3 (p. 36)</em></p>
+            <p><em>PRINCE2: 19.4 (p. 36)</em></p>
+
+            <p class="item-title"><strong>Decision Gate 2: Authorize Next Stage (P3)</strong></p>
+            <p>Validates readiness for transition and allocates continued funding.</p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="ip-stage-6-title">
+            <h2 id="ip-stage-6-title">Stage 6: Closure &amp; Handover (P4)</h2>
+            <p class="duration">Approximate Duration: 1 Month</p>
+
+            <p class="item-title"><strong>1. Administrative Closure</strong></p>
+            <p class="label">Activities:</p>
+            <p>Verify completion of all deliverables and formal documentation. Conduct closure review.</p>
+            <p class="label">Justification:</p>
+            <p>Confirms project completion and satisfaction of objectives.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK: Closing Process Group (p. 345)</em></p>
+
+            <p class="item-title"><strong>2. Learning Dissemination</strong></p>
+            <p class="label">Activities:</p>
+            <p>Finalize Lessons Report (PRINCE2 A8). Update Organizational Process Assets.</p>
+            <p class="label">Justification:</p>
+            <p>Promotes continuous improvement by sharing R&amp;D lessons across the organization.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: A8 (p. 314)</em></p>
+            <p><em>ISO 21502: 7.18.3 (p. 53)</em></p>
+
+            <p class="item-title"><strong>Decision Gate 3: Project Closure Confirmation</strong></p>
+            <p class="label">Activities:</p>
+            <p>Conduct Stage Boundary Review (PRINCE2 18.4.5). Evaluate project viability and business case achievement (PRINCE2 14.4.5, 19.4).</p>
+            <p class="label">Justification:</p>
+            <p>Confirms the project remains desirable, viable, and achievable before final closure.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: 18.4.5, 14.4.5, 19.4 (pp. 293, 254, 299)</em></p>
+          </section>
+
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

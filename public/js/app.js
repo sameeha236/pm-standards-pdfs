@@ -282,10 +282,10 @@ class PMStandardsApp {
 
     const getBookLink = (standard, page) => {
       const bookUrls = {
-        'PMBOK 7': 'https://sameeha236.github.io/pm-standards-pdfs/PMBOK.pdf',
-        'PRINCE2': 'https://sameeha236.github.io/pm-standards-pdfs/PRINCE2.pdf',
-        'ISO 21500': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21500.pdf',
-        'ISO 21502': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21502.pdf'
+        'PMBOK 7': '/assets/PMBOK.pdf',
+        'PRINCE2': '/assets/PRINCE2.pdf',
+        'ISO 21500': '/assets/ISO 21500-2021.pdf',
+        'ISO 21502': '/assets/ISO 21502-2020.pdf'
       };
       const bookTitles = {
         'PMBOK 7': 'PMBOK Guide 7th Edition',
@@ -408,10 +408,10 @@ class PMStandardsApp {
       // Get book link function
       const getBookLink = (standard, page) => {
         const bookUrls = {
-          'PMBOK 7': 'https://sameeha236.github.io/pm-standards-pdfs/PMBOK.pdf',
-          'PRINCE2': 'https://sameeha236.github.io/pm-standards-pdfs/PRINCE2.pdf',
-          'ISO 21500': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21500.pdf',
-          'ISO 21502': 'https://sameeha236.github.io/pm-standards-pdfs/ISO21502.pdf'
+          'PMBOK 7': '/assets/PMBOK.pdf',
+          'PRINCE2': '/assets/PRINCE2.pdf',
+          'ISO 21500': '/assets/ISO 21500-2021.pdf',
+          'ISO 21502': '/assets/ISO 21502-2020.pdf'
         };
         const bookTitles = {
           'PMBOK 7': 'PMBOK Guide 7th Edition',

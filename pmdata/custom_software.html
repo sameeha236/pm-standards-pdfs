@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Custom Software Development Project Plan</title>
+    <style>
+      :root {
+        --radius: 12px;
+        --gap: 16px;
+        --gap-lg: 24px;
+        --border: 1px solid #e5e7eb; /* light gray */
+      }
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        line-height: 1.6;
+        margin: 0;
+        color: #111827; /* near-black */
+        background: #1a365d; /* very light background */
+      }
+      .outer {
+        max-width: 960px;
+        margin: 32px auto;
+        padding: var(--gap-lg);
+      }
+      .main-box {
+        border: var(--border);
+        background: #ffffff;
+        border-radius: var(--radius);
+        padding: var(--gap-lg);
+      }
+      header h1 {
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+      }
+      .intro {
+        margin: 0 0 var(--gap-lg) 0;
+      }
+      .stages {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--gap-lg);
+      }
+      .stage-box {
+        border: var(--border);
+        border-radius: var(--radius);
+        padding: var(--gap-lg);
+      }
+      .stage-box h2 {
+        margin: 0 0 6px 0;
+        line-height: 1.35;
+      }
+      .duration {
+        margin: 0 0 var(--gap) 0;
+      }
+      .item-title {
+        margin: var(--gap) 0 4px 0;
+      }
+      .label {
+        font-weight: 600;
+        margin: 10px 0 2px 0;
+      }
+      p {
+        margin: 0 0 8px 0;
+      }
+      /* Ensure numbered items and stages clearly start on new lines via block spacing (already covered by margins) */
+    </style>
+  </head>
+  <body>
+    <main class="outer" role="main">
+      <div class="main-box" aria-label="Project Plan Main Container">
+        <header>
+          <h1>Custom Software Development Project</h1>
+          <p class="intro">Approach: Lightweight Hybrid (Focus on Speed and Flexibility)</p>
+        </header>
+
+        <section class="stages" aria-label="Project Stages">
+
+          <section class="stage-box" aria-labelledby="stage-1-title">
+            <h2 id="stage-1-title">Stage 1: Initiation (Rapid Foundation)</h2>
+            <p class="duration">Approximate Duration: 2–3 Weeks</p>
+
+            <p class="item-title"><strong>1. Appoint Core Roles and Define Governance</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Identify and assign core roles such as the Project Manager, Senior User, and Supplier Representative. Establish clear accountability and decision-making responsibilities.</p>
+            <p class="label">Justification:</p>
+            <p>Maintaining minimal layers and clearly defined roles ensures faster communication and decision-making — vital for smaller, fast-moving software teams. This aligns with the PRINCE2 principle of defining roles, responsibilities, and relationships.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: Sections 2.3, 6.2.1 (Pages 93, 43)</em></p>
+
+            <p class="item-title"><strong>2. Formalize Initial Justification and Feasibility</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Develop an Outline Business Case and a Project Brief to confirm early feasibility and purpose.</p>
+            <p class="label">Justification:</p>
+            <p>Verifying the project’s worth before full execution ensures continued business justification. A strong foundation of requirements helps form an early outcome-focused baseline.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: Sections 6.5.4, 4.3.2 (Pages 29, 17)</em></p>
+
+            <p class="item-title"><strong>3. Select Adaptive or Hybrid Approach</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Define the Project Product Description, outlining user expectations and acceptance criteria. Choose an appropriate adaptive or hybrid delivery model.</p>
+            <p class="label">Justification:</p>
+            <p>Tailoring the project approach enhances success probability. Adaptive approaches capitalize on smaller teams and iterative delivery cycles to maximize speed and responsiveness.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK 7: Sections G2.3.3, S3.7 (Pages 76, 46)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="stage-2-title">
+            <h2 id="stage-2-title">Stage 2: Planning (Focused and Progressive)</h2>
+            <p class="duration">Approximate Duration: 4–5 Weeks</p>
+
+            <p class="item-title"><strong>1. Progressive Scope Refinement</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Build a Product Backlog and create User Stories derived from defined requirements, refining scope progressively.</p>
+            <p class="label">Justification:</p>
+            <p>Adaptive planning provides flexibility by detailing work just-in-time, avoiding lengthy upfront specifications. The plan evolves throughout the project lifecycle to remain responsive.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: Sections 7.2.2, 7.4.2 (Pages 36, 38)</em></p>
+
+            <p class="item-title"><strong>2. Define Delivery Cadence</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Establish fixed iteration cycles or timeboxes (e.g., two-week sprints).</p>
+            <p class="label">Justification:</p>
+            <p>Timeboxing enforces speed and ensures project timelines stay within shorter delivery windows (usually under six months). This promotes consistent delivery of incremental software value.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: Section 8.4.3.2 (Page 160)</em></p>
+
+            <p class="item-title"><strong>3. Define Quality Thresholds</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Create a Definition of Done (DoD) and Quality Specifications for each deliverable.</p>
+            <p class="label">Justification:</p>
+            <p>The DoD establishes clear acceptance criteria, ensuring quality is built into processes and deliverables — an essential PMBOK principle for continuous quality assurance.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK 7: Sections S3.8, G2.6.3 (Pages 79, 180)</em></p>
+
+            <p class="item-title"><strong>4. Finalize Project Initiation Documentation (PID)</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Establish time, cost, and scope baselines within a lightweight Project Initiation Document (PID).</p>
+            <p class="label">Justification:</p>
+            <p>The PID functions as a “contract” between the Project Manager and Project Board, maintaining governance while applying streamlined baselines suitable for hybrid projects.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: Sections 15.4.6, A12 (Pages 265, 318)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="stage-3-title">
+            <h2 id="stage-3-title">Stage 3: Execution (Iterative Delivery)</h2>
+            <p class="duration">Approximate Duration: 10–12 Weeks (Integrated Iterations)</p>
+
+            <p class="item-title"><strong>1. Execute Time-boxed Work Packages or Sprints</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Carry out development, testing, and integration within short, iterative sprints, delivering working increments frequently.</p>
+            <p class="label">Justification:</p>
+            <p>Focuses on value delivery through iterative progress, producing usable outputs that support intended business outcomes.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK 7: Section 2.5 (Page 162)</em></p>
+
+            <p class="item-title"><strong>2. Apply Manage by Exception</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Fix time and cost constraints, allowing controlled flexibility in scope or features.</p>
+            <p class="label">Justification:</p>
+            <p>This PRINCE2 principle empowers the Project Manager to adapt quickly to deviations while maintaining momentum within agreed tolerances — crucial for short timelines.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: Section 2.4 (Page 44)</em></p>
+
+            <p class="item-title"><strong>3. Continuous Quality Control</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Perform ongoing validation and verification throughout development to ensure deliverables meet acceptance criteria.</p>
+            <p class="label">Justification:</p>
+            <p>Integrating quality control throughout the process increases the probability of producing outputs that are “fit for purpose.”</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: Section 7.11.4 (Page 46)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="stage-4-title">
+            <h2 id="stage-4-title">Stage 4: Monitoring and Control (Lightweight and Visual)</h2>
+            <p class="duration">Duration: Continuous</p>
+
+            <p class="item-title"><strong>1. Visualize Progress and Performance</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Use visual management tools such as Kanban Boards, Task Boards, or Checkpoint Reports.</p>
+            <p class="label">Justification:</p>
+            <p>These tools provide transparent and timely project tracking, allowing small agile teams to monitor progress efficiently without relying on heavy reporting structures.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK 7: Section G4.6.6 (Page 281)</em></p>
+
+            <p class="item-title"><strong>2. Manage Issues and Change Control</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Maintain a Change Log and handle off-specifications through a formalized Change Control Process.</p>
+            <p class="label">Justification:</p>
+            <p>Even in agile projects, structured change control ensures deviations are documented and approved, protecting the project’s baseline while recognizing the flexibility of software work.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PRINCE2: Section 10.2 (Page 188)</em></p>
+            <p><em>ISO 21502: Section 7.10 (Page 44)</em></p>
+
+            <p class="item-title"><strong>3. Integrate Feedback and Adapt</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Conduct Iteration Reviews and Retrospectives to capture lessons and make continuous improvements.</p>
+            <p class="label">Justification:</p>
+            <p>Frequent feedback cycles foster adaptability and resilience. Immediate learning enables corrective action and enhances team performance over successive iterations.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>PMBOK 7: Sections S3.11, G2.5.8 (Pages 86, 170)</em></p>
+          </section>
+
+          <section class="stage-box" aria-labelledby="stage-5-title">
+            <h2 id="stage-5-title">Stage 5: Closure (Formal Finalization)</h2>
+            <p class="duration">Approximate Duration: 1 Week</p>
+
+            <p class="item-title"><strong>1. Final Validation and Acceptance</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Verify that all deliverables meet their acceptance criteria and obtain formal Product Acceptance confirmation.</p>
+            <p class="label">Justification:</p>
+            <p>Formal closure ensures all project objectives and deliverables are achieved, confirming scope completion.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: Section 6.8 (Page 33)</em></p>
+            <p><em>PRINCE2: Section 19.4 (Page 299)</em></p>
+
+            <p class="item-title"><strong>2. Capture and Disseminate Lessons Learned</strong></p>
+            <p class="label">Key Activities:</p>
+            <p>Compile a Lessons Report documenting key takeaways, best practices, and improvement areas.</p>
+            <p class="label">Justification:</p>
+            <p>Learning from experience is a core PRINCE2 principle. Capturing lessons promotes ongoing improvement across future software development initiatives.</p>
+            <p class="label">Standards Reference:</p>
+            <p><em>ISO 21502: Section 7.18 (Page 52)</em></p>
+          </section>
+
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

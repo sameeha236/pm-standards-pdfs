@@ -14,6 +14,9 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+// Serve local PDF assets from the project root under /assets
+app.use('/assets', express.static(__dirname));
+
 // Configure multer for file uploads
 const upload = multer({ dest: 'uploads/' });
 

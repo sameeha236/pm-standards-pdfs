@@ -50,6 +50,22 @@
 
     <!-- Main Content -->
     <div class="container">
+        <!-- PM Data Scenarios (Top Section) -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">PM Data Scenarios</h3>
+            </div>
+            <div class="form-group">
+                <label for="pmdata-scenario" class="form-label">Choose a scenario</label>
+                <select id="pmdata-scenario" class="form-select">
+                    <option value="">Select a scenario</option>
+                    <option value="custom_software">Custom Software Development Project</option>
+                    <option value="innovative_product">Innovative Product Development Project</option>
+                    <option value="government_project">Large Government Project</option>
+                </select>
+            </div>
+            <div id="pmdata-content" class="section-text" style="padding: 1rem 0;"></div>
+        </div>
         <div class="hero">
             <h1>Scenario Recommender</h1>
             <p>Get tailored project management recommendations based on your project characteristics and requirements.</p>
@@ -229,6 +245,281 @@
 
     <script src="js/app.js"></script>
     <script>
+        // Load and render pmdata.txt scenario content
+        const pmdataIndex = {
+            custom_software: 'Custom Software Development Project',
+            innovative_product: 'Innovative Product Development Project',
+            government_project: 'Large Government Project'
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const selector = document.getElementById('pmdata-scenario');
+            if (selector) {
+                selector.addEventListener('change', async (e) => {
+                    const key = e.target.value;
+                    if (!key) {
+                        document.getElementById('pmdata-content').innerHTML = '';
+                        return;
+                    }
+                    await loadPmData(key);
+                });
+            }
+        });
+
+        async function loadPmData(key) {
+            try {
+                const title = pmdataIndex[key];
+
+                // 1) Prefer per-scenario file override if present
+                const perScenario = await (async () => {
+                    // Prefer HTML files for full custom formatting (embed via iframe)
+                    let url = `/assets/pmdata/${key}.html`;
+                    if (await exists(url)) return { type: 'html', url };
+                    url = `/assets/pm%20data/${key}.html`;
+                    if (await exists(url)) return { type: 'html', url };
+                    url = `/assets/${key}.html`;
+                    if (await exists(url)) return { type: 'html', url };
+                    // Fallback to text files
+                    let t = await fetchText(`/assets/pmdata/${key}.txt`);
+                    if (t) return { type: 'txt', content: t };
+                    t = await fetchText(`/assets/pm%20data/${key}.txt`);
+                    if (t) return { type: 'txt', content: t };
+                    t = await fetchText(`/assets/${key}.txt`);
+                    if (t) return { type: 'txt', content: t };
+                    return null;
+                })();
+                if (perScenario) {
+                    if (perScenario.type === 'html') {
+                        document.getElementById('pmdata-content').innerHTML = renderPmDataIframe(title, perScenario.url);
+                    } else {
+                        document.getElementById('pmdata-content').innerHTML = renderPmData(title, perScenario.content);
+                    }
+                    return;
+                }
+
+                // 2) Fallback to single pmdata.txt and try to extract matching section
+                const fallbackRaw = await fetchText('/assets/pmdata.txt');
+                if (!fallbackRaw) {
+                    document.getElementById('pmdata-content').innerHTML = '<p class="text-light">PM data file not found.</p>';
+                    return;
+                }
+
+                const extracted = extractScenarioSection(fallbackRaw, title);
+                document.getElementById('pmdata-content').innerHTML = renderPmData(title, extracted);
+            } catch (err) {
+                document.getElementById('pmdata-content').innerHTML = '<p class="text-light">Unable to load PM data.</p>';
+                console.error('PM data load error:', err);
+            }
+        }
+
+        async function fetchText(url) {
+            try {
+                const res = await fetch(url);
+                if (!res.ok) return null;
+                return await res.text();
+            } catch { return null; }
+        }
+
+        async function exists(url) {
+            try {
+                const res = await fetch(url, { method: 'HEAD' });
+                return res.ok;
+            } catch { return false; }
+        }
+
+        function extractScenarioSection(rawText, title) {
+            // Try parser 1: markdown headings ### <title>
+            const byHash = parsePmData(rawText);
+            if (byHash[title]) return byHash[title];
+
+            // Try parser 2: plain title line anchors (case-insensitive)
+            const lines = rawText.split(/\r?\n/);
+            const norm = (s) => String(s).trim().toLowerCase();
+            const target = norm(title);
+            let capturing = false;
+            const buf = [];
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const isHeader = norm(line).replace(/^#+\s*/, '') === target;
+                if (isHeader) { capturing = true; continue; }
+                // Stop when next obvious header starts
+                const looksLikeHeader = /^#{2,}\s+/.test(line) || /^\s*[-=]{3,}\s*$/.test(line) || /^\s*[A-Z].+:\s*$/.test(line);
+                if (capturing && isHeader === false && looksLikeHeader) break;
+                if (capturing) buf.push(line);
+            }
+            if (buf.length > 0) return buf.join('\n');
+
+            // Fallback 3: return full text as-is
+            return rawText;
+        }
+
+        function parsePmData(text) {
+            // Expected format: sections delimited by lines starting with ### <Scenario Title>
+            const lines = text.split(/\r?\n/);
+            const sections = {};
+            let current = '';
+            let buffer = [];
+            lines.forEach(line => {
+                const headerMatch = line.match(/^###\s+(.+)/);
+                if (headerMatch) {
+                    if (current) sections[current] = buffer.join('\n');
+                    current = headerMatch[1].trim();
+                    buffer = [];
+                } else {
+                    buffer.push(line);
+                }
+            });
+            if (current) sections[current] = buffer.join('\n');
+            return sections;
+        }
+
+        function renderPmData(title, content) {
+            // Single formatted block without stage boxes
+            const fullHtml = formatTextToHtml(content);
+            return `
+                <div class="section-content active" style="text-align: left;">
+                    <div class="section-header">
+                        <div class="section-title">${title}</div>
+                        <div class="section-reference"><em>Designed using PMBOK 7, PRINCE2, ISO 21500/21502</em></div>
+                    </div>
+                    <div class="section-text">${fullHtml}</div>
+                </div>
+            `;
+        }
+
+        function renderPmDataIframe(title, url) {
+            return `
+                <div class="section-content active" style="text-align: left;">
+                    <div class="section-header">
+                        <div class="section-title">${title}</div>
+                        <div class="section-reference"><em>Designed using PMBOK 7, PRINCE2, ISO 21500/21502</em></div>
+                    </div>
+                    <div class="section-text">
+                        <iframe src="${url}" style="width: 100%; height: 1400px; border: 0; background: white;"></iframe>
+                    </div>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        function formatTextToHtml(text) {
+            // Preserve text then do minimal formatting
+            let html = escapeHtml(text);
+            // Markdown-style headings only
+            html = html.replace(/^######\s+(.+)$/gm, '<h6>$1</h6>')
+                       .replace(/^#####\s+(.+)$/gm, '<h5>$1</h5>')
+                       .replace(/^####\s+(.+)$/gm, '<h4>$1</h4>')
+                       .replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+            // Bulleted lists
+            html = html.replace(/^\s*[-*]\s+(.+)$/gm, '<li>$1</li>');
+            html = html.replace(/(?:<li>.*?<\/li>\s*)+/gs, (m) => `<ul>${m}</ul>`);
+            // Preserve newlines
+            html = html.replace(/\n/g, '<br>');
+            return html;
+        }
+
+        function extractStages(text) {
+            const stages = [];
+            const lines = text.split(/\r?\n/);
+            const norm = (s) => String(s).trim().toLowerCase();
+
+            // Strategy A: Look for a "Phases" or "Stages" header then list items under it
+            let i = 0;
+            while (i < lines.length) {
+                const l = lines[i];
+                if (/^\s*#{2,}\s*(phases|stages)\b/i.test(l) || /^\s*(phases|stages)\s*:\s*$/i.test(l)) {
+                    i++;
+                    // Collect bullet/numbered list
+                    while (i < lines.length && (/^\s*[-*]\s+/.test(lines[i]) || /^\s*\d+\./.test(lines[i]))) {
+                        const item = lines[i].replace(/^\s*[-*]\s+/, '').replace(/^\s*\d+\.\s*/, '').trim();
+                        if (item) stages.push({ name: item, details: '' });
+                        i++;
+                    }
+                    break;
+                }
+                i++;
+            }
+
+            // Strategy B: Single-line arrow-separated phases
+            if (stages.length === 0) {
+                const arrowLine = lines.find(line => /\b(phases|stages)\b.*?[:：]/i.test(line) && /\->|→|⇒|›|››/.test(line));
+                if (arrowLine) {
+                    const afterColon = arrowLine.split(/[:：]/).slice(1).join(':');
+                    afterColon.split(/\s*(?:->|→|⇒|›|››)\s*/).forEach(seg => {
+                        const name = seg.trim();
+                        if (name) stages.push({ name, details: '' });
+                    });
+                }
+            }
+
+            // Strategy C: Common phase words in a compressed list line
+            if (stages.length === 0) {
+                const listLine = lines.find(line => /inception|discovery|definition|procurement|delivery|stabilization|commissioning|closeout|scale\-?up/i.test(line) && /,|\s->\s/.test(line));
+                if (listLine) {
+                    listLine.split(/,|\s->\s/).forEach(seg => {
+                        const name = seg.trim().replace(/^and\s+/i, '');
+                        if (name) stages.push({ name, details: '' });
+                    });
+                }
+            }
+
+            return stages;
+        }
+
+        function extractStageSectionsRobust(text, stageNames) {
+            const lines = text.split(/\r?\n/);
+            const norm = (s) => String(s).trim().toLowerCase();
+            const indices = [];
+
+            // Numbered or labeled headings (Stage N:, 1., 1.1.)
+            for (let i = 0; i < lines.length; i++) {
+                const l = lines[i];
+                if (/^\s*(Stage\s*\d+[:\-])\s+/.test(l)) {
+                    indices.push({ name: l.replace(/^\s*Stage\s*\d+[:\-]\s+/, '').trim(), line: i });
+                } else if (/^\s*\d+(?:\.\d+)*\.\s+/.test(l)) {
+                    indices.push({ name: l.replace(/^\s*\d+(?:\.\d+)*\.\s+/, '').trim(), line: i });
+                }
+            }
+
+            // If not found, align to explicit stageNames as headings
+            if (indices.length === 0 && Array.isArray(stageNames) && stageNames.length) {
+                for (let i = 0; i < lines.length; i++) {
+                    const raw = lines[i];
+                    const headerMatch = raw.match(/^\s*(?:#{1,6}\s*)?(.*\S)\s*:?\s*$/);
+                    if (!headerMatch) continue;
+                    const title = norm(headerMatch[1]);
+                    const matched = stageNames.find(n => norm(n) === title || title.includes(norm(n)) || norm(n).includes(title));
+                    if (matched) indices.push({ name: matched, line: i });
+                }
+            }
+
+            if (indices.length === 0) return [];
+
+            // Slice sections between indices
+            const rawSections = [];
+            for (let idx = 0; idx < indices.length; idx++) {
+                const start = indices[idx].line + 1;
+                const end = (idx + 1 < indices.length) ? indices[idx + 1].line : lines.length;
+                const chunk = lines.slice(start, end).join('\n').trim();
+                rawSections.push({ name: indices[idx].name, details: chunk });
+            }
+
+            // Order by stageNames if provided
+            let ordered = rawSections;
+            if (Array.isArray(stageNames) && stageNames.length) {
+                const byKey = new Map();
+                rawSections.forEach(s => byKey.set(norm(s.name), s));
+                ordered = stageNames.map(n => byKey.get(norm(n)) || { name: n, details: '' });
+            }
+
+            return ordered.map(s => ({ name: s.name, detailsHtml: formatTextToHtml(s.details || '') }));
+        }
         // Scenario specific functionality
         document.addEventListener('DOMContentLoaded', () => {
             setupScenarioForm();
